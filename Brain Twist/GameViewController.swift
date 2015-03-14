@@ -17,8 +17,6 @@ class GameViewController: UIViewController {
     var gameScene: GameScene!
     var skView: SKView!
     
-    // test
-    
     var pfGameObj: PFObject?
     
     override func viewDidLoad()
