@@ -17,10 +17,12 @@ class Game
     var running: Bool
 
     var score: Int
+    var correctObjectsShown: Int
     
     var squares: [Square]
     
     var currentRound: Round
+    var roundOver: Bool
     
     var timeToAddNewObject: Double?
     
@@ -33,8 +35,10 @@ class Game
         running = false
         
         score = 0
+        correctObjectsShown = 0
         
         currentRound = Round()
+        roundOver = false
         
         squares = [Square]()
     }
@@ -230,7 +234,7 @@ class Game
         Determine whether a newly created Object is going to intersect an Object that is
         already in the Game and alive
     
-        :returns: bool True if any Objects intersect
+        :return: bool True if any Objects intersect
     */
     func doesNewObjectIntersectAnotherObject() -> Bool
     {
@@ -250,5 +254,63 @@ class Game
         }
         
         return result
+    }
+    
+    /**
+        Determine whether a Square is the correct Square for the round
+        
+        :param: square Square
+        :return: bool True if correct Square for current Round
+    */
+    func isSquareCorrect(#square: Square) -> Bool
+    {
+        var result = false
+        
+        if(currentRound.targetColor != nil)
+        {
+            if(square.color == currentRound.targetColor)
+            {
+                result = true;
+            }
+        }
+        else if (currentRound.targetShape != nil)
+        {
+            
+        }
+        else
+        {
+            
+        }
+        
+        return result
+    }
+    
+    /**
+        Return the number of Squares that are current on the screen
+    
+        :return: squaresOnScreen Int
+    */
+    func getNumberOfSquaresOnScreen() -> Int
+    {
+        var count = 0
+        
+        for(var i = 0; i < squares.count; i++)
+        {
+            var square = squares[i]
+            if(square.drawnYet && !square.dead)
+            {
+                count++
+            }
+        }
+        
+        return count
+    }
+    
+    /**
+        End the current turn
+    */
+    func endTurn()
+    {
+        
     }
 }

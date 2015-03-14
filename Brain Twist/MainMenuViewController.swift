@@ -80,7 +80,7 @@ class MainMenuViewController: UIViewController
     {
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcMyGames") as MyGamesViewController
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(vc, animated: true, completion: nil)
     }
     

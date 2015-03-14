@@ -53,6 +53,9 @@ class Round
         }
     }
     
+    /**
+        Set a random Target Color for the Objects in this Rounds
+    */
     func setTargetColor()
     {
         var randomNum = Int(arc4random_uniform(UInt32(Constants.Colors.NumberOfColors)))
@@ -64,11 +67,28 @@ class Round
         }
         else if(randomNum == Constants.Colors.ColorBlue)
         {
-            targetColor = UIColor.whiteColor()
+            targetColor = UIColor.blueColor()
         }
         else
         {
             targetColor = UIColor.greenColor()
         }
+    }
+    
+    /**
+        Return the number of correct Objects that are to be drawn for this Round
+        
+        :return: numberOfObjects Int
+    */
+    func getNumberOfCorrectObjectsToDraw() -> Int
+    {
+        var result = 0
+        
+        if(pfRoundObj != nil)
+        {
+            result = pfRoundObj?.valueForKey("NumberOfCorrectObjectsToShow") as Int
+        }
+        
+        return result
     }
 }

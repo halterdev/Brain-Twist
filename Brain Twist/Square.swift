@@ -27,6 +27,7 @@ class Square
     
     var timeBorn: CFTimeInterval
     
+    var drawnYet: Bool
     var dead: Bool
     
     /**
@@ -45,6 +46,7 @@ class Square
         timeToLive = Double(arc4random_uniform(UInt32(Constants.Square.MaxTimeToLive))) + Constants.Square.MinimumTimeToLive
         timeBorn = currentTime
         
+        drawnYet = false
         dead = false
         
         generateXYCoords()

@@ -18,8 +18,6 @@ class MyGamesViewController: UIViewController
     @IBAction func btnNewGamePressed(sender: AnyObject)
     {
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
-        
-        //self.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(vc, animated: true, completion: nil)
     }
 }

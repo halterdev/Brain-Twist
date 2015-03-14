@@ -40,7 +40,7 @@ class GameScene: SKScene {
         {
             if(game.running)
             {
-                if(shouldAddNewObject(currentTime: currentTime))
+                if(shouldAddNewObject(currentTime: currentTime) && !game.roundOver)
                 {
                     game.addSquare(Square(currentTime: currentTime))
                     
@@ -151,9 +151,32 @@ class GameScene: SKScene {
         {
             if(!square.dead)
             {
-                self.addChild(square.getSquare())
+                if(!square.drawnYet)
+                {
+                    square.drawnYet = true  // first time square is drawn -- need to flag that
+                    
+                    if(game.isSquareCorrect(square: square))
+                    {
+                        game.correctObjectsShown++ // correct square was drawn
+                    }
+                }
+                
+                if(game.correctObjectsShown < game.currentRound.getNumberOfCorrectObjectsToDraw())
+                {
+                    self.addChild(square.getSquare())
+                }
+            }
+            else
+            {
+                if(game.getNumberOfSquaresOnScreen() == 0 &&
+                    game.correctObjectsShown >= game.currentRound.getNumberOfCorrectObjectsToDraw())
+                {
+                    game.roundOver = true
+                    viewController.dismissViewControllerAnimated(true, completion: nil)
+                }
             }
             
+            // if square has outlasted its time, kill it so it isn't drawn next update
             if(square.hasSquarePassedTimeToStay(currentTime: currentTime))
             {
                 square.kill()
