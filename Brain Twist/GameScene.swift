@@ -9,37 +9,163 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+   
+    var viewController: GameViewController
+    
+    var game: Game
+    
+    var time: CFTimeInterval?
+    var timeToAddNewObject: Double?
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("NSCoder not supported")
+    }
+    
+    init(size: CGSize, viewController: GameViewController) {
         
-        self.addChild(myLabel)
+        game = Game()
+        
+        self.viewController = viewController
+        
+        super.init(size: size)
+        
+        setupGame()
+        
+    }
+    
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+        
+        if(game.started)
+        {
+            if(game.running)
+            {
+                if(shouldAddNewObject(currentTime: currentTime))
+                {
+                    game.addSquare(Square(currentTime: currentTime))
+                    
+                    while(game.doesNewObjectIntersectAnotherObject())
+                    {
+                        // as long as Object just added intersects another Object on screen,
+                        // continue to change its coordinates until it fits
+                        game.squares[game.squares.count - 1].generateXYCoords()
+                    }
+                }
+            
+                drawObjectsToScreen(currentTime: currentTime)
+            }
+            else
+            {
+                // game hasn't actually started running yet, need to show the label that tells
+                // what to touch for a little bit, then dismiss and start game
+                
+                if(time == nil)
+                {
+                    time = currentTime
+                }
+                else
+                {
+                    if((currentTime - time!) > 2.5)
+                    {
+                        viewController.fadeOutSelectLabel()
+                        game.runGame()
+                        game.resetTimeToAddNewObject()
+                    }
+                }
+            }
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
         
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
+        if(game.running)
+        {
+            for touch in touches
+            {
+                let location = touch.locationInNode(self)
+                let touchedNode = nodeAtPoint(location)
+                touchedNode.position = location
+                
+                var touchedObj = game.objectTouched(touch: location)
+                
+                if(touchedObj != nil)
+                {
+                    var wasCorrectTouch = game.wasCorrectSquareTouched(square: touchedObj!)
+                }
+            }
         }
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+    
+    /**
+        Setup a new game
+    */
+    func setupGame()
+    {
+        game.startGame();
+        
+        viewController.setSelectLabel(select: game.getSelectLabel())
+    }
+    
+    /**
+        Determine whether or not a new object needs to be added to the game
+        
+        :param: currentTime The current time of the game
+        :returns: True or false, whether to create an object or not
+    */
+    func shouldAddNewObject(#currentTime: CFTimeInterval) -> Bool
+    {
+        var result = false
+        
+        if(time != nil)
+        {
+            if(game.timeToAddNewObject > Constants.Game.MaximumSecondsForObject)
+            {
+                game.timeToAddNewObject = Constants.Game.MaximumSecondsForObject
+            }
+            
+            if((currentTime - time!) > game.timeToAddNewObject!)
+            {
+                result = true
+                time = currentTime
+                game.resetTimeToAddNewObject()
+            }
+        }
+        else
+        {
+            result = false
+            time = currentTime
+            game.resetTimeToAddNewObject()
+        }
+        
+        return result
+    }
+    
+    /**
+        Draw the game's objects to the screen
+    */
+    func drawObjectsToScreen(#currentTime: CFTimeInterval)
+    {
+        self.removeAllChildren()
+        
+        for square in game.squares
+        {
+            if(!square.dead)
+            {
+                self.addChild(square.getSquare())
+            }
+            
+            if(square.hasSquarePassedTimeToStay(currentTime: currentTime))
+            {
+                square.kill()
+            }
+        }
+    }
+    
+    /**
+        Update Game based on a correct touch
+    */
+    func updateGameForCorrectTouch()
+    {
+        
     }
 }

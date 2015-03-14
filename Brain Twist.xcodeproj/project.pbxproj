@@ -7,14 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58483F731AA7ED0600993148 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58483F721AA7ED0600993148 /* Parse.framework */; };
+		585344331AAE626D00F41D51 /* UserLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585344321AAE626D00F41D51 /* UserLogic.swift */; };
+		585ECC991AB11C5C00227AEC /* MyGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585ECC981AB11C5C00227AEC /* MyGamesViewController.swift */; };
+		5866CD061AAFD9C000FCD07A /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866CD051AAFD9C000FCD07A /* MainMenuViewController.swift */; };
+		587DAF8D1AA7EDA8005960FD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF8C1AA7EDA8005960FD /* Bolts.framework */; };
+		587DAF991AA7EE17005960FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF8E1AA7EE17005960FD /* AudioToolbox.framework */; };
+		587DAF9A1AA7EE17005960FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF8F1AA7EE17005960FD /* CFNetwork.framework */; };
+		587DAF9B1AA7EE17005960FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF901AA7EE17005960FD /* CoreGraphics.framework */; };
+		587DAF9C1AA7EE17005960FD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF911AA7EE17005960FD /* CoreLocation.framework */; };
+		587DAF9D1AA7EE17005960FD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF921AA7EE17005960FD /* libsqlite3.dylib */; };
+		587DAF9E1AA7EE17005960FD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF931AA7EE17005960FD /* libz.dylib */; };
+		587DAF9F1AA7EE17005960FD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF941AA7EE17005960FD /* MobileCoreServices.framework */; };
+		587DAFA01AA7EE17005960FD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF951AA7EE17005960FD /* QuartzCore.framework */; };
+		587DAFA11AA7EE17005960FD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF961AA7EE17005960FD /* Security.framework */; };
+		587DAFA21AA7EE17005960FD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF971AA7EE17005960FD /* StoreKit.framework */; };
+		587DAFA31AA7EE17005960FD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF981AA7EE17005960FD /* SystemConfiguration.framework */; };
+		587DAFA91AA7F47D005960FD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587DAFA81AA7F47D005960FD /* RegisterViewController.swift */; };
 		5882B22D1AA3944E0062F58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B22C1AA3944E0062F58C /* AppDelegate.swift */; };
-		5882B22F1AA3944E0062F58C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5882B22E1AA3944E0062F58C /* GameScene.sks */; };
 		5882B2311AA3944E0062F58C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2301AA3944E0062F58C /* GameScene.swift */; };
 		5882B2331AA3944E0062F58C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2321AA3944E0062F58C /* GameViewController.swift */; };
 		5882B2361AA3944E0062F58C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5882B2341AA3944E0062F58C /* Main.storyboard */; };
 		5882B2381AA3944E0062F58C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5882B2371AA3944E0062F58C /* Images.xcassets */; };
 		5882B23B1AA3944E0062F58C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5882B2391AA3944E0062F58C /* LaunchScreen.xib */; };
 		5882B2471AA3944E0062F58C /* Brain_TwistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2461AA3944E0062F58C /* Brain_TwistTests.swift */; };
+		5882B2521AA396DC0062F58C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2511AA396DC0062F58C /* Game.swift */; };
+		5882B2541AA398EF0062F58C /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2531AA398EF0062F58C /* Square.swift */; };
+		5882B2571AA3A7F70062F58C /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2561AA3A7F70062F58C /* MenuScene.swift */; };
+		5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2591AA3BBFD0062F58C /* Constants.swift */; };
+		5882B25C1AA407450062F58C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B25B1AA407450062F58C /* Round.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,10 +49,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58483F721AA7ED0600993148 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		585344321AAE626D00F41D51 /* UserLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogic.swift; sourceTree = "<group>"; };
+		585ECC981AB11C5C00227AEC /* MyGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGamesViewController.swift; sourceTree = "<group>"; };
+		5866CD051AAFD9C000FCD07A /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		587DAF8C1AA7EDA8005960FD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		587DAF8E1AA7EE17005960FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		587DAF8F1AA7EE17005960FD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		587DAF901AA7EE17005960FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		587DAF911AA7EE17005960FD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		587DAF921AA7EE17005960FD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		587DAF931AA7EE17005960FD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		587DAF941AA7EE17005960FD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		587DAF951AA7EE17005960FD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		587DAF961AA7EE17005960FD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		587DAF971AA7EE17005960FD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		587DAF981AA7EE17005960FD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		587DAFA41AA7EE3F005960FD /* Brain Twist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Brain Twist-Bridging-Header.h"; sourceTree = "<group>"; };
+		587DAFA81AA7F47D005960FD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5882B2271AA3944E0062F58C /* Brain Twist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brain Twist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5882B22B1AA3944E0062F58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5882B22C1AA3944E0062F58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5882B22E1AA3944E0062F58C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5882B2301AA3944E0062F58C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		5882B2321AA3944E0062F58C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5882B2351AA3944E0062F58C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +78,11 @@
 		5882B2401AA3944E0062F58C /* Brain TwistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Brain TwistTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5882B2451AA3944E0062F58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5882B2461AA3944E0062F58C /* Brain_TwistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain_TwistTests.swift; sourceTree = "<group>"; };
+		5882B2511AA396DC0062F58C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5882B2531AA398EF0062F58C /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		5882B2561AA3A7F70062F58C /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		5882B2591AA3BBFD0062F58C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5882B25B1AA407450062F58C /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +90,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587DAF991AA7EE17005960FD /* AudioToolbox.framework in Frameworks */,
+				587DAF9A1AA7EE17005960FD /* CFNetwork.framework in Frameworks */,
+				587DAF9B1AA7EE17005960FD /* CoreGraphics.framework in Frameworks */,
+				587DAF9C1AA7EE17005960FD /* CoreLocation.framework in Frameworks */,
+				587DAF9D1AA7EE17005960FD /* libsqlite3.dylib in Frameworks */,
+				587DAF9E1AA7EE17005960FD /* libz.dylib in Frameworks */,
+				587DAF9F1AA7EE17005960FD /* MobileCoreServices.framework in Frameworks */,
+				587DAFA01AA7EE17005960FD /* QuartzCore.framework in Frameworks */,
+				587DAFA11AA7EE17005960FD /* Security.framework in Frameworks */,
+				587DAFA21AA7EE17005960FD /* StoreKit.framework in Frameworks */,
+				587DAFA31AA7EE17005960FD /* SystemConfiguration.framework in Frameworks */,
+				58483F731AA7ED0600993148 /* Parse.framework in Frameworks */,
+				587DAF8D1AA7EDA8005960FD /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +116,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58483F711AA7EC9400993148 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				587DAF8E1AA7EE17005960FD /* AudioToolbox.framework */,
+				587DAF8F1AA7EE17005960FD /* CFNetwork.framework */,
+				587DAF901AA7EE17005960FD /* CoreGraphics.framework */,
+				587DAF911AA7EE17005960FD /* CoreLocation.framework */,
+				587DAF921AA7EE17005960FD /* libsqlite3.dylib */,
+				587DAF931AA7EE17005960FD /* libz.dylib */,
+				587DAF941AA7EE17005960FD /* MobileCoreServices.framework */,
+				587DAF951AA7EE17005960FD /* QuartzCore.framework */,
+				587DAF961AA7EE17005960FD /* Security.framework */,
+				587DAF971AA7EE17005960FD /* StoreKit.framework */,
+				587DAF981AA7EE17005960FD /* SystemConfiguration.framework */,
+				587DAF8C1AA7EDA8005960FD /* Bolts.framework */,
+				58483F721AA7ED0600993148 /* Parse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		587DAFA71AA7F44C005960FD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				587DAFA81AA7F47D005960FD /* RegisterViewController.swift */,
+				5866CD051AAFD9C000FCD07A /* MainMenuViewController.swift */,
+				585ECC981AB11C5C00227AEC /* MyGamesViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		5882B21E1AA3944E0062F58C = {
 			isa = PBXGroup;
 			children = (
+				58483F711AA7EC9400993148 /* Frameworks */,
 				5882B2291AA3944E0062F58C /* Brain Twist */,
 				5882B2431AA3944E0062F58C /* Brain TwistTests */,
 				5882B2281AA3944E0062F58C /* Products */,
@@ -81,14 +168,17 @@
 		5882B2291AA3944E0062F58C /* Brain Twist */ = {
 			isa = PBXGroup;
 			children = (
+				587DAFA71AA7F44C005960FD /* Controllers */,
+				5882B2581AA3BBEF0062F58C /* Logic */,
+				5882B2551AA3A6220062F58C /* Scenes */,
+				5882B2501AA396CF0062F58C /* GameObjects */,
 				5882B22C1AA3944E0062F58C /* AppDelegate.swift */,
-				5882B22E1AA3944E0062F58C /* GameScene.sks */,
-				5882B2301AA3944E0062F58C /* GameScene.swift */,
 				5882B2321AA3944E0062F58C /* GameViewController.swift */,
 				5882B2341AA3944E0062F58C /* Main.storyboard */,
 				5882B2371AA3944E0062F58C /* Images.xcassets */,
 				5882B2391AA3944E0062F58C /* LaunchScreen.xib */,
 				5882B22A1AA3944E0062F58C /* Supporting Files */,
+				587DAFA41AA7EE3F005960FD /* Brain Twist-Bridging-Header.h */,
 			);
 			path = "Brain Twist";
 			sourceTree = "<group>";
@@ -116,6 +206,34 @@
 				5882B2451AA3944E0062F58C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5882B2501AA396CF0062F58C /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5882B2511AA396DC0062F58C /* Game.swift */,
+				5882B2531AA398EF0062F58C /* Square.swift */,
+				5882B25B1AA407450062F58C /* Round.swift */,
+			);
+			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		5882B2551AA3A6220062F58C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				5882B2301AA3944E0062F58C /* GameScene.swift */,
+				5882B2561AA3A7F70062F58C /* MenuScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		5882B2581AA3BBEF0062F58C /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				5882B2591AA3BBFD0062F58C /* Constants.swift */,
+				585344321AAE626D00F41D51 /* UserLogic.swift */,
+			);
+			name = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +285,7 @@
 				TargetAttributes = {
 					5882B2261AA3944E0062F58C = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = F2NVTTUCV9;
 					};
 					5882B23F1AA3944E0062F58C = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -200,7 +319,6 @@
 			files = (
 				5882B23B1AA3944E0062F58C /* LaunchScreen.xib in Resources */,
 				5882B2381AA3944E0062F58C /* Images.xcassets in Resources */,
-				5882B22F1AA3944E0062F58C /* GameScene.sks in Resources */,
 				5882B2361AA3944E0062F58C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +337,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5882B2541AA398EF0062F58C /* Square.swift in Sources */,
+				585344331AAE626D00F41D51 /* UserLogic.swift in Sources */,
+				5866CD061AAFD9C000FCD07A /* MainMenuViewController.swift in Sources */,
 				5882B2311AA3944E0062F58C /* GameScene.swift in Sources */,
+				585ECC991AB11C5C00227AEC /* MyGamesViewController.swift in Sources */,
 				5882B2331AA3944E0062F58C /* GameViewController.swift in Sources */,
+				5882B2571AA3A7F70062F58C /* MenuScene.swift in Sources */,
+				5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */,
 				5882B22D1AA3944E0062F58C /* AppDelegate.swift in Sources */,
+				587DAFA91AA7F47D005960FD /* RegisterViewController.swift in Sources */,
+				5882B25C1AA407450062F58C /* Round.swift in Sources */,
+				5882B2521AA396DC0062F58C /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +473,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Brain Twist/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Brain Twist/Brain Twist-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -356,9 +492,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Brain Twist/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Brain Twist/Brain Twist-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -415,6 +559,7 @@
 				5882B24C1AA3944E0062F58C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5882B24D1AA3944E0062F58C /* Build configuration list for PBXNativeTarget "Brain TwistTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +568,7 @@
 				5882B24F1AA3944E0062F58C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
