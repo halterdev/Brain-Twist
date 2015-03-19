@@ -40,6 +40,7 @@ class GameViewController: UIViewController {
         else
         {
             gameScene.game.pfGameObj = pfGameObj
+            
         }
 
         // Present the scene.
@@ -69,5 +70,10 @@ class GameViewController: UIViewController {
     func fadeOutSelectLabel()
     {
         lblSelectThis.hidden = true
+    }
+    
+    func killGameScene()
+    {
+        self.gameScene = nil
     }
 }

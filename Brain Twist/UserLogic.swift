@@ -40,4 +40,33 @@ struct UserLogic
         
         return result
     }
+    
+    static func addUserToWaitList()
+    {
+        var waitingUser = PFUser()
+        var done = false
+        
+        var query = PFQuery(className: PFUser.parseClassName())
+        query.whereKey("username", equalTo: "breezy")
+        
+        waitingUser = query.getFirstObject() as PFUser
+        
+        var userWaiting = PFObject(className: "UsersWaitingForGame")
+        userWaiting.setObject(waitingUser, forKey: "User")
+        userWaiting.save()
+        
+    }
+    
+    static func getOpponentFromWaitingList() -> PFUser
+    {
+        var result = PFUser()
+        
+        var query = PFQuery(className: "UsersWaitingForGame")
+        query.includeKey("User")
+        
+        var userWaitingForGameRow = query.getFirstObject()
+        result = userWaitingForGameRow["User"] as PFUser
+        
+        return result
+    }
 }

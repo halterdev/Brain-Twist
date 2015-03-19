@@ -36,6 +36,11 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
+        if(game.isFinished)
+        {
+            dismissGame()
+        }
+        
         if(game.started)
         {
             if(game.running)
@@ -171,8 +176,27 @@ class GameScene: SKScene {
                 if(game.getNumberOfSquaresOnScreen() == 0 &&
                     game.correctObjectsShown >= game.currentRound.getNumberOfCorrectObjectsToDraw())
                 {
-                    game.roundOver = true
-                    viewController.dismissViewControllerAnimated(true, completion: nil)
+                    game.updateGameForEndOfCurrentTurn()
+                    
+                    var isGameComplete = false
+                    if(game.currentRound.isRoundOver())
+                    {
+                        // round is over -- either need to create a new round or end the game entirely??
+                       
+                        if(!game.isThisGameCompleteNow())
+                        {
+                            // need to create a new round to continue the game @ this point
+                            
+                        }
+                        else
+                        {
+                            // game is over
+                            
+                            game.setGameFinished()
+                        }
+                    }
+                    
+                    game.isFinished = true
                 }
             }
             
@@ -184,11 +208,10 @@ class GameScene: SKScene {
         }
     }
     
-    /**
-        Update Game based on a correct touch
-    */
-    func updateGameForCorrectTouch()
+    func dismissGame()
     {
-        
+        game.removeAllSquares()
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+        viewController.killGameScene()
     }
 }

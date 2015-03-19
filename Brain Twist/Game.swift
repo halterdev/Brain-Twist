@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
+
 class Game
 {
     var pfGameObj: PFObject?
     
     var started: Bool
     var running: Bool
+    var isFinished: Bool
 
     var score: Int
     var correctObjectsShown: Int
@@ -33,31 +35,42 @@ class Game
     {
         started = false
         running = false
+        roundOver = false
+        isFinished = false
         
         score = 0
         correctObjectsShown = 0
         
         currentRound = Round()
-        roundOver = false
-        
         squares = [Square]()
     }
+    
     
     /**
         Create a new Game PFObject for the Game
     */
     func createGamePFObject()
     {
-        pfGameObj = PFObject(className: "Game")
+        if(false)
+        {
+            UserLogic.addUserToWaitList()
+        }
         
-        pfGameObj?.setObject(PFUser.currentUser(), forKey: "PlayerOne")
-        pfGameObj?.saveInBackgroundWithBlock {
+        var playerTwo = UserLogic.getOpponentFromWaitingList() as PFUser
+        
+        pfGameObj = PFObject(className: "Game")
+        pfGameObj!.setObject(PFUser.currentUser(), forKey: "PlayerOne")
+        pfGameObj!.setObject(playerTwo, forKey: "PlayerTwo")
+        pfGameObj!.setValue(1, forKey: "RoundNumber")
+        pfGameObj!.setValue(false, forKey: "IsFinished")
+        
+        pfGameObj!.saveInBackgroundWithBlock {
             (success: Bool!, error: NSError!) -> Void in
             if (success != nil)
             {
                 // game object was successfully created, now create its round obj
                 self.currentRound.game = self
-                self.currentRound.createRoundPFObject(pfGameObj: self.pfGameObj!)
+                self.currentRound.createRoundPFObject(pfGameObj: self.pfGameObj!, roundNumber: 1, isPlayerOne: true)
             }
             else
             {
@@ -307,10 +320,69 @@ class Game
     }
     
     /**
-        End the current turn
+        Update Game for end of current turn
     */
-    func endTurn()
+    func updateGameForEndOfCurrentTurn()
     {
+        roundOver = true
+        currentRound.updateRoundForEndOfTurn()
+    }
+    
+    /**
+        Create a new Round and assign it as the Game's current Round
+    */
+    func createAndAssignNewRound()
+    {
+        var newRound = Round(game: self)
+    }
+    
+    /**
+        Determine if the Game is completely over by checking the round number and whether
+        or not both players have finished the round
+    
+        :return: isComplete Bool
+    */
+    func isThisGameCompleteNow() -> Bool
+    {
+        var result = false
         
+        if(currentRound.getCurrentRoundNumber() == Constants.Game.NumberOfRounds)
+        {
+            if(currentRound.isRoundOver())
+            {
+                result = true // the game is completely over @ this point..
+            }
+        }
+        
+        return result
+    }
+    
+    /**
+        Set the Game as finished
+    */
+    func setGameFinished()
+    {
+        isFinished = true
+        
+        pfGameObj?.setValue(true, forKey: "IsFinished")
+        pfGameObj?.saveInBackgroundWithBlock {
+            (success: Bool!, error: NSError!) -> Void in
+            if (success != nil)
+            {
+                // game was successfully marked finished
+            }
+            else
+            {
+                NSLog("%@", error)
+            }
+        }
+    }
+    
+    /**
+        Remove all Squares from Game
+    */
+    func removeAllSquares()
+    {
+        squares.removeAll(keepCapacity: false)
     }
 }

@@ -43,5 +43,7 @@ struct Constants
     {
         static let MaximumSecondsForObject = 3.0
         static let MaxDivideForSecondsToAdd = 10
+        
+        static let NumberOfRounds = 3
     }
 }
