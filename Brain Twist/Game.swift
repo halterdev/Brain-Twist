@@ -206,14 +206,6 @@ class Game
                 result = true;
             }
         }
-        else if (currentRound.targetShape != nil)
-        {
-            
-        }
-        else
-        {
-            
-        }
         
         return result
     }
@@ -285,14 +277,6 @@ class Game
             {
                 result = true;
             }
-        }
-        else if (currentRound.targetShape != nil)
-        {
-            
-        }
-        else
-        {
-            
         }
         
         return result

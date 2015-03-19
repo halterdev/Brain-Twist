@@ -11,7 +11,6 @@ import SpriteKit
 class GameScene: SKScene {
    
     var viewController: GameViewController
-    
     var game: Game
     
     var time: CFTimeInterval?
@@ -181,11 +180,9 @@ class GameScene: SKScene {
                     var isGameComplete = false
                     if(game.currentRound.isRoundOver())
                     {
-                        // round is over -- either need to create a new round or end the game entirely??
-                       
                         if(!game.isThisGameCompleteNow())
                         {
-                            // need to create a new round to continue the game @ this point
+                            // create the next round
                             
                         }
                         else
