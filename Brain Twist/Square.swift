@@ -113,11 +113,18 @@ class Square
     */
     func kill()
     {
+        dead = true
+    }
+    
+    /**
+        Eliminate a square from the screen
+    */
+    func zeroOutValues()
+    {
         x = 0
         y = 0
         height = 0
         width = 0
-        dead = true
     }
     
     /**

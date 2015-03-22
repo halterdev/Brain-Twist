@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		584110071ABA5AE9003419BB /* RoundLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584110061ABA5AE9003419BB /* RoundLogic.swift */; };
 		58483F731AA7ED0600993148 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58483F721AA7ED0600993148 /* Parse.framework */; };
 		585344331AAE626D00F41D51 /* UserLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585344321AAE626D00F41D51 /* UserLogic.swift */; };
+		585DB18E1ABB95CA00D5F009 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585DB18D1ABB95CA00D5F009 /* GameLogic.swift */; };
 		585ECC991AB11C5C00227AEC /* MyGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585ECC981AB11C5C00227AEC /* MyGamesViewController.swift */; };
 		5866CD061AAFD9C000FCD07A /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866CD051AAFD9C000FCD07A /* MainMenuViewController.swift */; };
 		587DAF8D1AA7EDA8005960FD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587DAF8C1AA7EDA8005960FD /* Bolts.framework */; };
@@ -49,8 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		584110061ABA5AE9003419BB /* RoundLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundLogic.swift; sourceTree = "<group>"; };
 		58483F721AA7ED0600993148 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		585344321AAE626D00F41D51 /* UserLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogic.swift; sourceTree = "<group>"; };
+		585DB18D1ABB95CA00D5F009 /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		585ECC981AB11C5C00227AEC /* MyGamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGamesViewController.swift; sourceTree = "<group>"; };
 		5866CD051AAFD9C000FCD07A /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		587DAF8C1AA7EDA8005960FD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 			children = (
 				5882B2591AA3BBFD0062F58C /* Constants.swift */,
 				585344321AAE626D00F41D51 /* UserLogic.swift */,
+				584110061ABA5AE9003419BB /* RoundLogic.swift */,
+				585DB18D1ABB95CA00D5F009 /* GameLogic.swift */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -341,7 +347,9 @@
 				585344331AAE626D00F41D51 /* UserLogic.swift in Sources */,
 				5866CD061AAFD9C000FCD07A /* MainMenuViewController.swift in Sources */,
 				5882B2311AA3944E0062F58C /* GameScene.swift in Sources */,
+				584110071ABA5AE9003419BB /* RoundLogic.swift in Sources */,
 				585ECC991AB11C5C00227AEC /* MyGamesViewController.swift in Sources */,
+				585DB18E1ABB95CA00D5F009 /* GameLogic.swift in Sources */,
 				5882B2331AA3944E0062F58C /* GameViewController.swift in Sources */,
 				5882B2571AA3A7F70062F58C /* MenuScene.swift in Sources */,
 				5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */,

@@ -40,7 +40,7 @@ class GameScene: SKScene {
             dismissGame()
         }
         
-        if(game.started)
+        if(game.started && !game.isFinished)
         {
             if(game.running)
             {
@@ -151,17 +151,19 @@ class GameScene: SKScene {
     {
         self.removeAllChildren()
         
+        var done = false
+        
         for square in game.squares
         {
             if(!square.dead)
             {
                 if(!square.drawnYet)
                 {
-                    square.drawnYet = true  // first time square is drawn -- need to flag that
+                    square.drawnYet = true
                     
                     if(game.isSquareCorrect(square: square))
                     {
-                        game.correctObjectsShown++ // correct square was drawn
+                        game.correctObjectsShown++
                     }
                 }
                 
@@ -175,21 +177,30 @@ class GameScene: SKScene {
                 if(game.getNumberOfSquaresOnScreen() == 0 &&
                     game.correctObjectsShown >= game.currentRound.getNumberOfCorrectObjectsToDraw())
                 {
-                    game.updateGameForEndOfCurrentTurn()
-                    
-                    var isGameComplete = false
-                    if(game.currentRound.isRoundOver())
+                    if(!done)
                     {
-                        if(!game.isThisGameCompleteNow())
+                        game.updateGameForEndOfCurrentTurn()
+                        if(game.currentRound.isRoundOver())
                         {
-                            // create the next round
+                            game.currentRound.markRoundFinished()
                             
-                        }
-                        else
-                        {
-                            // game is over
+                            var didPlayerOneWin = false
+                            if(game.currentRound.pfRoundObj!.valueForKey("PlayerOneScore") as Int > game.currentRound.pfRoundObj?.valueForKey("PlayerTwoScore") as Int)
+                            {
+                                didPlayerOneWin = true
+                            }
+                            GameLogic.IncreaseWinsOfGame(game: game, didPlayerOneWin: didPlayerOneWin)
                             
-                            game.setGameFinished()
+                            if(!game.isThisGameCompleteNow())
+                            {
+                                RoundLogic.createNewRoundForGame(game: game)
+                            }
+                            else
+                            {
+                                GameLogic.SetGameIsFinished(game: game)
+                                GameLogic.SetWinnerOfGame(game: game)
+                            }
+                            done = true
                         }
                     }
                     

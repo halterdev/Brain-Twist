@@ -39,8 +39,8 @@ class GameViewController: UIViewController {
         }
         else
         {
-            gameScene.game.pfGameObj = pfGameObj
-            
+            gameScene.game.setupGameWithPFObject(pfGameObj: pfGameObj!)
+            gameScene.game.getAndAssignRound()
         }
 
         // Present the scene.

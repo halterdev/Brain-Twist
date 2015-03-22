@@ -62,6 +62,8 @@ class Game
         pfGameObj!.setObject(PFUser.currentUser(), forKey: "PlayerOne")
         pfGameObj!.setObject(playerTwo, forKey: "PlayerTwo")
         pfGameObj!.setValue(1, forKey: "RoundNumber")
+        pfGameObj!.setValue(0, forKey: "PlayerOneWins")
+        pfGameObj!.setValue(0, forKey: "PlayerTwoWins")
         pfGameObj!.setValue(false, forKey: "IsFinished")
         
         pfGameObj!.saveInBackgroundWithBlock {
@@ -80,13 +82,20 @@ class Game
     }
     
     /**
-        Set the Game's PFObject
-    
-        :param: game PFObject
+        Setup the Game from a loaded Game PFObject
     */
-    func setGameObject(#pfGameObj: PFObject)
+    func setupGameWithPFObject(#pfGameObj: PFObject)
     {
         self.pfGameObj = pfGameObj
+    }
+    
+    /**
+        Get and assign the Game's current Round PFObject
+    */
+    func getAndAssignRound()
+    {
+        var pfRoundObj = RoundLogic.getRoundPFObject(game: pfGameObj!)
+        currentRound = Round(roundObj: pfRoundObj, game: self)
     }
     
     /**
@@ -309,15 +318,7 @@ class Game
     func updateGameForEndOfCurrentTurn()
     {
         roundOver = true
-        currentRound.updateRoundForEndOfTurn()
-    }
-    
-    /**
-        Create a new Round and assign it as the Game's current Round
-    */
-    func createAndAssignNewRound()
-    {
-        var newRound = Round(game: self)
+        RoundLogic.UpdateRoundForEndOfTurn(game: self)
     }
     
     /**
@@ -341,26 +342,6 @@ class Game
         return result
     }
     
-    /**
-        Set the Game as finished
-    */
-    func setGameFinished()
-    {
-        isFinished = true
-        
-        pfGameObj?.setValue(true, forKey: "IsFinished")
-        pfGameObj?.saveInBackgroundWithBlock {
-            (success: Bool!, error: NSError!) -> Void in
-            if (success != nil)
-            {
-                // game was successfully marked finished
-            }
-            else
-            {
-                NSLog("%@", error)
-            }
-        }
-    }
     
     /**
         Remove all Squares from Game

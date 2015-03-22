@@ -29,7 +29,16 @@ class Round
         setTargetColor()
     }
     
-    init(#roundNumber: Int, #isPlayerOne: Bool)
+    init(roundObj: PFObject, game: Game)
+    {
+        self.game = game
+        self.pfRoundObj = roundObj
+        
+        roundNumber = roundObj.valueForKey("RoundNumber") as Int
+        setTargetColor(id: roundObj.valueForKey("TargetColorID") as Int)
+    }
+    
+    init(roundNumber: Int, isPlayerOne: Bool)
     {
         self.roundNumber = roundNumber
         
@@ -46,11 +55,20 @@ class Round
         roundNumber = pfRoundObj?.valueForKey("RoundNumber") as Int
     }
     
+    init(game: Game, amIAddingANewRound: Bool)
+    {
+        self.game = game
+        roundNumber = game.currentRound.roundNumber
+        roundNumber++
+        
+        setTargetColor()
+    }
+    
     
     /**
         Create a PFObject representing the Round
     */
-    func createRoundPFObject(#pfGameObj: PFObject, #roundNumber: Int, #isPlayerOne: Bool)
+    func createRoundPFObject(#pfGameObj: PFObject, roundNumber: Int, isPlayerOne: Bool)
     {
         pfRoundObj = PFObject(className: "Round")
         
@@ -113,6 +131,25 @@ class Round
     }
     
     /**
+        Set Target Color with a Target Color ID
+    */
+    func setTargetColor(#id: Int)
+    {
+        if(id == Constants.Colors.ColorRed)
+        {
+            targetColor = UIColor.redColor()
+        }
+        else if(id == Constants.Colors.ColorBlue)
+        {
+            targetColor = UIColor.blueColor()
+        }
+        else
+        {
+            targetColor = UIColor.greenColor()
+        }
+    }
+    
+    /**
         Return the number of correct Objects that are to be drawn for this Round
         
         :return: numberOfObjects Int
@@ -127,34 +164,6 @@ class Round
         }
         
         return result
-    }
-    
-    /**
-        Update the Round based on the end of a turn
-    */
-    func updateRoundForEndOfTurn()
-    {
-        var playerOne = pfRoundObj?.valueForKey("PlayerOne") as PFUser
-        var playerTwo = pfRoundObj?.valueForKey("PlayerTwo") as PFUser
-        
-        if(playerOne == PFUser.currentUser())
-        {
-            // player one finished turn
-            
-            pfRoundObj?.setValue(true, forKey: "HasPlayerOnePlayed")
-            pfRoundObj?.setValue(game?.score, forKey: "PlayerOneScore")
-            pfRoundObj?.setObject(playerTwo, forKey: "TurnPlayer")
-        }
-        else
-        {
-            // player two finished turn
-            
-            pfRoundObj?.setValue(true, forKey: "HasPlayerTwoPlayed")
-            pfRoundObj?.setValue(game?.score, forKey: "PlayerTwoScore")
-            pfRoundObj?.setObject(playerOne, forKey: "TurnPlayer")
-        }
-        
-        pfRoundObj?.save()
     }
     
     /**
@@ -189,10 +198,18 @@ class Round
     }
     
     /**
+        Mark the Round as Finished
+    */
+    func markRoundFinished()
+    {
+        RoundLogic.markRoundFinished(round: pfRoundObj!)
+    }
+    
+    /**
         Get the CurrentRound number of the Round
     */
     func getCurrentRoundNumber() -> Int
     {
-        return pfRoundObj?.valueForKey("CurrentRound") as Int
+        return pfRoundObj?.valueForKey("RoundNumber") as Int
     }
 }
