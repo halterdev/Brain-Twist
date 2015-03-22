@@ -179,7 +179,8 @@ class GameScene: SKScene {
                 {
                     if(!done)
                     {
-                        game.updateGameForEndOfCurrentTurn()
+                        game.updateGameForEndOfCurrentTurn(PFUser.currentUser())
+                        
                         if(game.currentRound.isRoundOver())
                         {
                             game.currentRound.markRoundFinished()
@@ -189,19 +190,21 @@ class GameScene: SKScene {
                             {
                                 didPlayerOneWin = true
                             }
+                            
                             GameLogic.IncreaseWinsOfGame(game: game, didPlayerOneWin: didPlayerOneWin)
                             
                             if(!game.isThisGameCompleteNow())
                             {
                                 RoundLogic.createNewRoundForGame(game: game)
+                                GameLogic.UpdateRoundNumberOfGame(game: game)
                             }
                             else
                             {
                                 GameLogic.SetGameIsFinished(game: game)
                                 GameLogic.SetWinnerOfGame(game: game)
                             }
-                            done = true
                         }
+                        done = true
                     }
                     
                     game.isFinished = true

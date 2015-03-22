@@ -66,6 +66,9 @@ class Square
         square.fillColor = color
         square.addChild(text)
         
+        var textNode = (square.children[0] as SKLabelNode)
+        textNode.position = generateCGPointForLabel()
+        
         return square
     }
     
@@ -154,6 +157,22 @@ class Square
     }
     
     /**
+        Generate CGPoint for label inside a square
+    
+        :return: point CGPoint
+    */
+    func generateCGPointForLabel() -> CGPoint
+    {
+        var labelX: Double
+        var labelY: Double
+        labelX = x + (Constants.Square.squareWidth / 2)
+        labelY = y + (Constants.Square.squareHeight / 3)
+        
+        var point = CGPoint(x: labelX, y: labelY)
+        return point
+    }
+    
+    /**
         Generate the Square's text
     */
     func generateText()
@@ -177,6 +196,12 @@ class Square
             text = SKLabelNode(text: "Orange")
         }
         
-        text.fontSize = 6
+        text.fontSize = 15
+        if(text.text == "Green")
+        {
+            text.fontSize = 12
+        }
+        text.fontName = "AvenirNext-Bold";
+        text.color = UIColor.whiteColor()
     }
 }

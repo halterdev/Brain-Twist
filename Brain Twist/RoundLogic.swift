@@ -70,7 +70,7 @@ struct RoundLogic
         
         :param: round Round
     */
-    static func UpdateRoundForEndOfTurn(#game: Game)
+    static func UpdateRoundForEndOfTurn(#game: Game, user: PFUser)
     {
         var pfRoundObj = PFObject(className: "Round")
         pfRoundObj = game.currentRound.pfRoundObj
@@ -78,7 +78,7 @@ struct RoundLogic
         var playerOne = pfRoundObj!.valueForKey("PlayerOne") as PFUser
         var playerTwo = pfRoundObj!.valueForKey("PlayerTwo") as PFUser
         
-        if(playerOne == PFUser.currentUser())
+        if(playerOne.objectId == user.objectId)
         {
             // player one finished turn
             

@@ -315,10 +315,10 @@ class Game
     /**
         Update Game for end of current turn
     */
-    func updateGameForEndOfCurrentTurn()
+    func updateGameForEndOfCurrentTurn(user: PFUser)
     {
         roundOver = true
-        RoundLogic.UpdateRoundForEndOfTurn(game: self)
+        RoundLogic.UpdateRoundForEndOfTurn(game: self, user: user)
     }
     
     /**
