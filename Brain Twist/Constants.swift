@@ -12,8 +12,8 @@ struct Constants
 {
     struct Square
     {
-        static let squareHeight = 45.0
-        static let squareWidth = 45.0
+        static let squareHeight = 55.0
+        static let squareWidth = 55.0
         
         static let minX = 35.0
         static let minY = 35.0
@@ -21,7 +21,7 @@ struct Constants
         static let maxX = 345.0
         static let maxY = 635.0
         
-        static let MaxTimeToLive = 1.5
+        static let MaxTimeToLive = 1.0
         static let MinimumTimeToLive = 0.5
     }
     
@@ -41,9 +41,11 @@ struct Constants
     
     struct Game
     {
-        static let MaximumSecondsForObject = 3.0
-        static let MaxDivideForSecondsToAdd = 10
+        static let MaximumSecondsForObject = 1.0
+        static let MaxDivideForSecondsToAdd = 3.5
         
         static let NumberOfRounds = 3
+        
+        static let NumberOfCorrectObjectsToShowPerRound = 10
     }
 }

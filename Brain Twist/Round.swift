@@ -92,7 +92,7 @@ class Round
         pfRoundObj?.setValue(0, forKey: "PlayerOneScore")
         pfRoundObj?.setValue(0, forKey: "PlayerTwoScore")
         pfRoundObj?.setValue(targetColorID, forKey: "TargetColorID")
-        pfRoundObj?.setValue(7, forKey: "NumberOfCorrectObjectsToShow")
+        pfRoundObj?.setValue(Constants.Game.NumberOfCorrectObjectsToShowPerRound, forKey: "NumberOfCorrectObjectsToShow")
         pfRoundObj?.setValue(false, forKey: "IsFinished")
         
         pfRoundObj?.saveInBackgroundWithBlock {

@@ -58,7 +58,7 @@ struct RoundLogic
         round.setValue(0, forKey: "PlayerOneScore")
         round.setValue(0, forKey: "PlayerTwoScore")
         round.setValue(newRound.targetColorID, forKey: "TargetColorID")
-        round.setValue(7, forKey: "NumberOfCorrectObjectsToShow")
+        round.setValue(Constants.Game.NumberOfCorrectObjectsToShowPerRound, forKey: "NumberOfCorrectObjectsToShow")
         round.setValue(false, forKey: "IsFinished")
         
         round.save()
