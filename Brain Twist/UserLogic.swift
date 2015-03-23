@@ -18,7 +18,7 @@ struct UserLogic
         :param: password String
         :returns: String - Empty if success, otherwise the error
     */
-    static func register(#email: String, #username: String, #password: String) -> String
+    static func register(#email: String, username: String, password: String) -> String
     {
         var result = ""
         var user = PFUser()
@@ -67,6 +67,19 @@ struct UserLogic
         var userWaitingForGameRow = query.getFirstObject()
         result = userWaitingForGameRow["User"] as PFUser
         
+        return result
+    }
+    
+    static func getUsernameWithObjectId(id: String) -> String
+    {
+        var result: String
+        
+        var query = PFQuery(className: PFUser.parseClassName())
+        query.whereKey("objectId", equalTo: id)
+        
+        var user = query.getFirstObject() as PFUser
+        
+        result = user.username
         return result
     }
 }

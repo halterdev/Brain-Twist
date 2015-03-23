@@ -13,6 +13,8 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
 {
     @IBOutlet weak var btnNewGame: UIButton!
     
+    @IBOutlet weak var lblYoureTurn: UILabel!
+    
     @IBOutlet weak var tblMyTurn: UITableView!
     
     var myTurnGameIds: [String]?
@@ -22,6 +24,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         tblMyTurn.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tblMyTurn.tableFooterView = UIView(frame: CGRectZero)
         
         loadMyTurns()
     }
@@ -79,6 +82,22 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             for round in rounds
             {
                 var game = round["Game"] as PFObject
+                var roundNumber = game.valueForKey("RoundNumber") as Int
+                
+                var playerOne = game["PlayerOne"] as PFUser
+                var playerTwo = game["PlayerTwo"] as PFUser
+                
+                var opponent: PFUser
+                var opponentName: String
+                if(playerOne != PFUser.currentUser())
+                {
+                    opponent = playerOne
+                }
+                else
+                {
+                    opponent = playerTwo
+                }
+                opponentName = UserLogic.getUsernameWithObjectId(opponent.objectId)
                 
                 if(self.myTurnGameIds == nil)
                 {
@@ -87,9 +106,15 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 self.myTurnGameIds?.append(game.objectId)
-                self.myTurnStrings?.append("Test")
+                self.myTurnStrings?.append("Round \(roundNumber) vs \(opponentName)")
             }
             self.tblMyTurn.reloadData()
+            
+            if(self.myTurnGameIds != nil && self.myTurnGameIds?.count > 0)
+            {
+                self.lblYoureTurn.hidden = false
+                self.tblMyTurn.hidden = false
+            }
         }
     }
     
