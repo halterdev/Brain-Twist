@@ -22,11 +22,13 @@ class RegisterViewController: UIViewController
     
     var mainController: MainMenuViewController!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
     }
     
-    @IBAction func btnRegisterPressed(sender: AnyObject) {
+    @IBAction func btnRegisterPressed(sender: AnyObject)
+    {
         
         var result = UserLogic.register(email: txtEmail.text, username: txtUsername.text, password: txtPassword.text)
         if(result == "")
@@ -37,7 +39,9 @@ class RegisterViewController: UIViewController
             self.presentViewController(GameViewController(), animated: true, completion: nil)
         }
     }
-    @IBAction func btnBackPressed(sender: AnyObject) {
+    
+    @IBAction func btnCancelPressed(sender: AnyObject)
+    {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

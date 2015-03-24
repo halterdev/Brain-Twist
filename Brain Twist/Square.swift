@@ -199,7 +199,7 @@ class Square
         text.fontSize = 15
         if(text.text == "Green")
         {
-            text.fontSize = 12
+            //text.fontSize = 12
         }
         text.fontName = "AvenirNext-Bold";
         text.color = UIColor.whiteColor()

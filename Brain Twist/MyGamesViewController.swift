@@ -118,6 +118,11 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBAction func btnBackPressed(sender: AnyObject)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func btnNewGamePressed(sender: AnyObject)
     {
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
