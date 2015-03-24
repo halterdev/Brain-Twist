@@ -35,7 +35,6 @@
 		5882B2471AA3944E0062F58C /* Brain_TwistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2461AA3944E0062F58C /* Brain_TwistTests.swift */; };
 		5882B2521AA396DC0062F58C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2511AA396DC0062F58C /* Game.swift */; };
 		5882B2541AA398EF0062F58C /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2531AA398EF0062F58C /* Square.swift */; };
-		5882B2571AA3A7F70062F58C /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2561AA3A7F70062F58C /* MenuScene.swift */; };
 		5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2591AA3BBFD0062F58C /* Constants.swift */; };
 		5882B25C1AA407450062F58C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B25B1AA407450062F58C /* Round.swift */; };
 /* End PBXBuildFile section */
@@ -84,7 +83,6 @@
 		5882B2461AA3944E0062F58C /* Brain_TwistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain_TwistTests.swift; sourceTree = "<group>"; };
 		5882B2511AA396DC0062F58C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5882B2531AA398EF0062F58C /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
-		5882B2561AA3A7F70062F58C /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		5882B2591AA3BBFD0062F58C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5882B25B1AA407450062F58C /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				5882B2301AA3944E0062F58C /* GameScene.swift */,
-				5882B2561AA3A7F70062F58C /* MenuScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				585ECC991AB11C5C00227AEC /* MyGamesViewController.swift in Sources */,
 				585DB18E1ABB95CA00D5F009 /* GameLogic.swift in Sources */,
 				5882B2331AA3944E0062F58C /* GameViewController.swift in Sources */,
-				5882B2571AA3A7F70062F58C /* MenuScene.swift in Sources */,
 				5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */,
 				5882B22D1AA3944E0062F58C /* AppDelegate.swift in Sources */,
 				587DAFA91AA7F47D005960FD /* RegisterViewController.swift in Sources */,

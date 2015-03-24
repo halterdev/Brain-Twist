@@ -75,5 +75,6 @@ class GameViewController: UIViewController {
     func killGameScene()
     {
         self.gameScene = nil
+        self.removeFromParentViewController()
     }
 }

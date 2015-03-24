@@ -26,7 +26,6 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblMyTurn.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tblMyTurn.tableFooterView = UIView(frame: CGRectZero)
         
-        loadMyTurns()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -116,6 +115,34 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tblMyTurn.hidden = false
             }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        myTurnGameIds = nil
+        myTurnStrings = nil
+        
+        loadMyTurns()
+        
+        if(myTurnGameIds?.count == 0)
+        {
+            hideYoureTableInfo()
+        }
+        else
+        {
+            showYoureTableInfo()
+        }
+    }
+    
+    private func hideYoureTableInfo()
+    {
+        lblYoureTurn.hidden = true
+        tblMyTurn.hidden = true
+    }
+    private func showYoureTableInfo()
+    {
+        lblYoureTurn.hidden = false
+        tblMyTurn.hidden = false
     }
     
     @IBAction func btnBackPressed(sender: AnyObject)

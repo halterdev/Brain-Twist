@@ -11,16 +11,21 @@ import SpriteKit
 class GameScene: SKScene {
    
     var viewController: GameViewController
+    
     var game: Game
     
     var time: CFTimeInterval?
     var timeToAddNewObject: Double?
+    
+    var dismissed: Bool
     
     required init(coder aDecoder: NSCoder) {
         fatalError("NSCoder not supported")
     }
     
     init(size: CGSize, viewController: GameViewController) {
+        
+        dismissed = false
         
         game = Game()
         
@@ -35,9 +40,10 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        if(game.isFinished)
+        if(game.isFinished && !dismissed)
         {
             dismissGame()
+            dismissed = true
         }
         
         if(game.started && !game.isFinished)
@@ -222,7 +228,8 @@ class GameScene: SKScene {
     func dismissGame()
     {
         game.removeAllSquares()
-        viewController.dismissViewControllerAnimated(true, completion: nil)
         viewController.killGameScene()
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+        //myGamesViewController.loadMyTurns()
     }
 }
