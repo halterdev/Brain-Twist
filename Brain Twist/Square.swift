@@ -117,6 +117,7 @@ class Square
     func kill()
     {
         dead = true
+        zeroOutValues()
     }
     
     /**
