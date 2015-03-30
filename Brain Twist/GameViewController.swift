@@ -43,6 +43,8 @@ class GameViewController: UIViewController {
             gameScene.game.getAndAssignRound()
         }
 
+        gameScene.setupGame()
+        
         // Present the scene.
         skView.presentScene(gameScene)
     }

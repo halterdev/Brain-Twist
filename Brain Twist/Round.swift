@@ -36,6 +36,11 @@ class Round
         
         roundNumber = roundObj.valueForKey("RoundNumber") as Int
         setTargetColor(id: roundObj.valueForKey("TargetColorID") as Int)
+        
+        if(roundNumber > 1)
+        {
+            setTargetText(color: roundObj.valueForKey("TargetText") as String)
+        }
     }
     
     init(roundNumber: Int, isPlayerOne: Bool)
@@ -62,6 +67,7 @@ class Round
         roundNumber++
         
         setTargetColor()
+        setTargetText()
     }
     
     
@@ -147,6 +153,36 @@ class Round
         {
             targetColor = UIColor.greenColor()
         }
+    }
+    
+    /**
+        Set a random Target Text for the Objects in this Round
+    */
+    func setTargetText()
+    {
+        var randomNum = Int(arc4random_uniform(UInt32(Constants.Colors.NumberOfColors)))
+        targetColorID = randomNum
+        
+        if(randomNum == Constants.Colors.ColorRed)
+        {
+            targetText = "Red"
+        }
+        else if(randomNum == Constants.Colors.ColorBlue)
+        {
+            targetText = "Blue"
+        }
+        else
+        {
+            targetText = "Green"
+        }
+    }
+    
+    /**
+        Set the Target Text with a Target Tex ID
+    */
+    func setTargetText(#color: String)
+    {
+        targetText = color
     }
     
     /**

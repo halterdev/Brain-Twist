@@ -33,7 +33,7 @@ class GameScene: SKScene {
         
         super.init(size: size)
         
-        setupGame()
+        //setupGame()
         
     }
     

@@ -118,8 +118,15 @@ class Game
     func getSelectLabel() -> String
     {
         var color = ""
+        var result = ""
+        var isColor = true
         
-        if(currentRound.targetColor? != nil)
+        if(currentRound.targetText? != nil)
+        {
+            color = currentRound.targetText!
+            result = "Tap the squares that say \(color)!"
+        }
+        else if(currentRound.targetColor? != nil)
         {
             if(currentRound.targetColor! == UIColor.redColor())
             {
@@ -135,7 +142,12 @@ class Game
             }
         }
         
-        return "Tap the \(color) squares!"
+        if(result == "")
+        {
+            result = "Tap the \(color) squares!"
+        }
+        
+        return result
     }
     
     /**
@@ -208,7 +220,14 @@ class Game
     {
         var result = false
         
-        if(currentRound.targetColor != nil)
+        if(currentRound.targetText != nil)
+        {
+            if(square.text.text == currentRound.targetText)
+            {
+                result = true
+            }
+        }
+        else if(currentRound.targetColor != nil)
         {
             if(square.color == currentRound.targetColor)
             {
@@ -280,7 +299,14 @@ class Game
     {
         var result = false
         
-        if(currentRound.targetColor != nil)
+        if(currentRound.targetText != nil)
+        {
+            if(square.text.text == currentRound.targetText)
+            {
+                result = true;
+            }
+        }
+        else if(currentRound.targetColor != nil)
         {
             if(square.color == currentRound.targetColor)
             {
