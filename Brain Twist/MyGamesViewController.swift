@@ -32,8 +32,17 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
         
+        scrollView.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
+        
+        btnNewGame.layer.cornerRadius = 10
+        btnNewGame.clipsToBounds = true
+        btnNewGame.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        
         tblMyTurn.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tblMyTurn.tableFooterView = UIView(frame: CGRectZero)
+        tblMyTurn.layer.cornerRadius = 10
+        tblMyTurn.clipsToBounds = true
+        tblMyTurn.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         
         tblTheirTurn.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellopponent")
         tblTheirTurn.tableFooterView = UIView(frame: CGRectZero)

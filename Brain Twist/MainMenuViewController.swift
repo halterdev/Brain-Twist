@@ -10,6 +10,8 @@ import Foundation
 
 class MainMenuViewController: UIViewController
 {
+    @IBOutlet weak var lblBrainTwist: UILabel!
+    
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
@@ -22,6 +24,21 @@ class MainMenuViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
+        
+        lblBrainTwist.textColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        
+        txtUsername.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        txtPassword.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        
+        btnLogin.layer.cornerRadius = 10
+        btnLogin.clipsToBounds = true
+        btnLogin.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        
+        btnGames.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        btnGames.layer.cornerRadius = 10
+        btnGames.clipsToBounds = true
 
         user = PFUser.currentUser()
         
@@ -38,6 +55,7 @@ class MainMenuViewController: UIViewController
         if(loggedIn)
         {
             // setup screen for user that is logged in
+            lblBrainTwist.hidden = true
             txtUsername.hidden = true
             txtPassword.hidden = true
             btnLogin.hidden = true
@@ -48,6 +66,7 @@ class MainMenuViewController: UIViewController
         else
         {
             // set up screen for someone not logged in
+            lblBrainTwist.hidden = false
             txtUsername.hidden = false
             txtPassword.hidden = false
             btnLogin.hidden = false

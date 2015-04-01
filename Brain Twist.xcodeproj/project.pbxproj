@@ -37,6 +37,7 @@
 		5882B2541AA398EF0062F58C /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2531AA398EF0062F58C /* Square.swift */; };
 		5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2591AA3BBFD0062F58C /* Constants.swift */; };
 		5882B25C1AA407450062F58C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B25B1AA407450062F58C /* Round.swift */; };
+		58C69B031ACB748A001817C9 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B021ACB748A001817C9 /* MainTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		5882B2531AA398EF0062F58C /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		5882B2591AA3BBFD0062F58C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5882B25B1AA407450062F58C /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		58C69B021ACB748A001817C9 /* MainTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		5882B2291AA3944E0062F58C /* Brain Twist */ = {
 			isa = PBXGroup;
 			children = (
+				58C69B011ACB746E001817C9 /* Controls */,
 				587DAFA71AA7F44C005960FD /* Controllers */,
 				5882B2581AA3BBEF0062F58C /* Logic */,
 				5882B2551AA3A6220062F58C /* Scenes */,
@@ -237,6 +240,14 @@
 				585DB18D1ABB95CA00D5F009 /* GameLogic.swift */,
 			);
 			name = Logic;
+			sourceTree = "<group>";
+		};
+		58C69B011ACB746E001817C9 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				58C69B021ACB748A001817C9 /* MainTextField.swift */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +357,7 @@
 				5882B2311AA3944E0062F58C /* GameScene.swift in Sources */,
 				584110071ABA5AE9003419BB /* RoundLogic.swift in Sources */,
 				585ECC991AB11C5C00227AEC /* MyGamesViewController.swift in Sources */,
+				58C69B031ACB748A001817C9 /* MainTextField.swift in Sources */,
 				585DB18E1ABB95CA00D5F009 /* GameLogic.swift in Sources */,
 				5882B2331AA3944E0062F58C /* GameViewController.swift in Sources */,
 				5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */,
