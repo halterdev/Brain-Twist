@@ -39,7 +39,7 @@ class MainMenuViewController: UIViewController
         btnGames.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         btnGames.layer.cornerRadius = 10
         btnGames.clipsToBounds = true
-
+        
         user = PFUser.currentUser()
         
         setMainMenu(loggedIn: false)
@@ -61,7 +61,6 @@ class MainMenuViewController: UIViewController
             btnLogin.hidden = true
             btnNotRegistered.hidden = true
             
-            btnGames.hidden = false
         }
         else
         {
@@ -86,6 +85,7 @@ class MainMenuViewController: UIViewController
                     // successful login
                     self.user = PFUser.currentUser()
                     self.setMainMenu(loggedIn: true)
+                    self.performSegueWithIdentifier("loggedInSegue", sender: self)
                     
                 }
                 else

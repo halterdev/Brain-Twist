@@ -5,7 +5,26 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main Menu View Controller-->
+        <!--My Tab Bar Controller-->
+        <scene sceneID="Zlx-mn-Mh3">
+            <objects>
+                <tabBarController id="rNY-NE-YFu" customClass="MyTabBarController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="lfP-7c-vMa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="J1B-CI-ANQ" kind="relationship" relationship="viewControllers" id="BJo-Iq-9MI"/>
+                        <segue destination="gOD-5v-0uc" kind="relationship" relationship="viewControllers" id="aSf-Ab-Xzi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeO-ZH-0Ui" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-884" y="932"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="NIi-p1-jca">
             <objects>
                 <viewController id="TQl-Fl-cSa" customClass="MainMenuViewController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,6 +115,7 @@
                             <constraint firstItem="xx7-G6-73M" firstAttribute="centerX" secondItem="95L-6C-pBd" secondAttribute="centerX" id="wsd-yk-8Ly"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="NVd-u6-v3k"/>
                     <connections>
                         <outlet property="btnGames" destination="HfP-TP-2Q8" id="dJX-Bx-8wU"/>
                         <outlet property="btnLogin" destination="xx7-G6-73M" id="IqJ-Mm-jiZ"/>
@@ -103,13 +123,14 @@
                         <outlet property="lblBrainTwist" destination="CZb-SG-vwO" id="wgC-dq-yS7"/>
                         <outlet property="txtPassword" destination="95L-6C-pBd" id="fmZ-wA-GUR"/>
                         <outlet property="txtUsername" destination="LPj-KJ-wtx" id="Jbu-aE-kXH"/>
+                        <segue destination="rNY-NE-YFu" kind="custom" identifier="loggedInSegue" id="aqd-Gh-Bzq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBg-Qc-lYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="233"/>
+            <point key="canvasLocation" x="-884" y="189"/>
         </scene>
-        <!--My Games View Controller-->
+        <!--Games-->
         <scene sceneID="pg2-so-X3Q">
             <objects>
                 <viewController storyboardIdentifier="vcMyGames" id="gOD-5v-0uc" customClass="MyGamesViewController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,7 +142,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCS-B6-W1V">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCS-B6-W1V">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlQ-xQ-H4A">
@@ -169,18 +190,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2b-Gu-lKY">
-                                        <rect key="frame" x="8" y="24" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="NZP-CU-KeD"/>
-                                        </constraints>
-                                        <state key="normal" title="Back">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="btnBackPressed:" destination="gOD-5v-0uc" eventType="touchUpInside" id="z9I-g8-cIY"/>
-                                        </connections>
-                                    </button>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HH3-pH-ENp">
                                         <rect key="frame" x="150" y="326" width="300" height="184"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,13 +215,12 @@
                                             <constraint firstAttribute="height" constant="21" id="bhg-jF-kuS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Aeg-dK-frN" secondAttribute="trailing" constant="150" id="DUg-B4-kba"/>
-                                    <constraint firstItem="k2b-Gu-lKY" firstAttribute="leading" secondItem="hCS-B6-W1V" secondAttribute="leadingMargin" id="Gfb-hm-vzA"/>
                                     <constraint firstItem="HH3-pH-ENp" firstAttribute="top" secondItem="WX1-il-dI8" secondAttribute="bottom" constant="8" symbolic="YES" id="Jk0-dQ-NXV"/>
                                     <constraint firstItem="WX1-il-dI8" firstAttribute="top" secondItem="Aeg-dK-frN" secondAttribute="bottom" constant="25" id="JpD-Rk-gfq"/>
                                     <constraint firstAttribute="bottom" secondItem="HH3-pH-ENp" secondAttribute="bottom" constant="490" id="KV2-ee-hEd"/>
@@ -223,7 +231,6 @@
                                     <constraint firstItem="SlQ-xQ-H4A" firstAttribute="top" secondItem="hCS-B6-W1V" secondAttribute="top" constant="52" id="YOJ-lB-WhO"/>
                                     <constraint firstItem="Aeg-dK-frN" firstAttribute="centerX" secondItem="WX1-il-dI8" secondAttribute="centerX" id="ffJ-zO-eR4"/>
                                     <constraint firstItem="WX1-il-dI8" firstAttribute="centerX" secondItem="hCS-B6-W1V" secondAttribute="centerX" id="jip-ls-VUD"/>
-                                    <constraint firstItem="k2b-Gu-lKY" firstAttribute="top" secondItem="hCS-B6-W1V" secondAttribute="top" constant="24" id="sg4-V7-9OX"/>
                                     <constraint firstItem="s8B-Di-w8Y" firstAttribute="top" secondItem="SlQ-xQ-H4A" secondAttribute="bottom" constant="33" id="t9c-ed-Rsj"/>
                                     <constraint firstItem="Aeg-dK-frN" firstAttribute="top" secondItem="s8B-Di-w8Y" secondAttribute="bottom" constant="8" symbolic="YES" id="vxP-I3-PZp"/>
                                 </constraints>
@@ -237,6 +244,11 @@
                             <constraint firstItem="hCS-B6-W1V" firstAttribute="leading" secondItem="Ca1-hI-AHL" secondAttribute="leading" id="y8M-Z4-EdI"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Games" image="game.png" selectedImage="game.png" id="V4a-B2-4gs">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="game.png"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
@@ -250,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rN-uy-xke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="1132"/>
+            <point key="canvasLocation" x="-190" y="2188"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -292,7 +304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="505" y="-443"/>
+            <point key="canvasLocation" x="537" y="1988"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="I7R-Xm-eX8">
@@ -415,7 +427,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8em-dq-hxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="505" y="233"/>
+            <point key="canvasLocation" x="-190" y="189"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="JvB-Wt-ErC">
+            <objects>
+                <viewController id="J1B-CI-ANQ" customClass="HomeViewController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pts-qq-Vft"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Fk-R9-kyl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RrR-lM-Y1c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="home.png" selectedImage="home.png" id="J62-rN-wbG">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="home.png"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1C-8H-b1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-190" y="932"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="game.png" width="30" height="30"/>
+        <image name="home.png" width="30" height="30"/>
+    </resources>
 </document>

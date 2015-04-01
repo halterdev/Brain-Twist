@@ -38,6 +38,10 @@
 		5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2591AA3BBFD0062F58C /* Constants.swift */; };
 		5882B25C1AA407450062F58C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B25B1AA407450062F58C /* Round.swift */; };
 		58C69B031ACB748A001817C9 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B021ACB748A001817C9 /* MainTextField.swift */; };
+		58C69B051ACB862D001817C9 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B041ACB862D001817C9 /* MyTabBarController.swift */; };
+		58C69B071ACB892B001817C9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B061ACB892B001817C9 /* HomeViewController.swift */; };
+		58C69CA71ACB8D84001817C9 /* game.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C69CA51ACB8D84001817C9 /* game.png */; };
+		58C69CA81ACB8D84001817C9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C69CA61ACB8D84001817C9 /* home.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,10 @@
 		5882B2591AA3BBFD0062F58C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5882B25B1AA407450062F58C /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		58C69B021ACB748A001817C9 /* MainTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
+		58C69B041ACB862D001817C9 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		58C69B061ACB892B001817C9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		58C69CA51ACB8D84001817C9 /* game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game.png; sourceTree = "<group>"; };
+		58C69CA61ACB8D84001817C9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +154,8 @@
 				587DAFA81AA7F47D005960FD /* RegisterViewController.swift */,
 				5866CD051AAFD9C000FCD07A /* MainMenuViewController.swift */,
 				585ECC981AB11C5C00227AEC /* MyGamesViewController.swift */,
+				58C69B041ACB862D001817C9 /* MyTabBarController.swift */,
+				58C69B061ACB892B001817C9 /* HomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +182,7 @@
 		5882B2291AA3944E0062F58C /* Brain Twist */ = {
 			isa = PBXGroup;
 			children = (
+				58C69B081ACB8A92001817C9 /* Images */,
 				58C69B011ACB746E001817C9 /* Controls */,
 				587DAFA71AA7F44C005960FD /* Controllers */,
 				5882B2581AA3BBEF0062F58C /* Logic */,
@@ -180,6 +191,8 @@
 				5882B22C1AA3944E0062F58C /* AppDelegate.swift */,
 				5882B2321AA3944E0062F58C /* GameViewController.swift */,
 				5882B2341AA3944E0062F58C /* Main.storyboard */,
+				58C69CA51ACB8D84001817C9 /* game.png */,
+				58C69CA61ACB8D84001817C9 /* home.png */,
 				5882B2371AA3944E0062F58C /* Images.xcassets */,
 				5882B2391AA3944E0062F58C /* LaunchScreen.xib */,
 				5882B22A1AA3944E0062F58C /* Supporting Files */,
@@ -248,6 +261,13 @@
 				58C69B021ACB748A001817C9 /* MainTextField.swift */,
 			);
 			name = Controls;
+			sourceTree = "<group>";
+		};
+		58C69B081ACB8A92001817C9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5882B23B1AA3944E0062F58C /* LaunchScreen.xib in Resources */,
+				58C69CA81ACB8D84001817C9 /* home.png in Resources */,
+				58C69CA71ACB8D84001817C9 /* game.png in Resources */,
 				5882B2381AA3944E0062F58C /* Images.xcassets in Resources */,
 				5882B2361AA3944E0062F58C /* Main.storyboard in Resources */,
 			);
@@ -362,9 +384,11 @@
 				5882B2331AA3944E0062F58C /* GameViewController.swift in Sources */,
 				5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */,
 				5882B22D1AA3944E0062F58C /* AppDelegate.swift in Sources */,
+				58C69B071ACB892B001817C9 /* HomeViewController.swift in Sources */,
 				587DAFA91AA7F47D005960FD /* RegisterViewController.swift in Sources */,
 				5882B25C1AA407450062F58C /* Round.swift in Sources */,
 				5882B2521AA396DC0062F58C /* Game.swift in Sources */,
+				58C69B051ACB862D001817C9 /* MyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,7 +46,10 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tblTheirTurn.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellopponent")
         tblTheirTurn.tableFooterView = UIView(frame: CGRectZero)
-        
+        tblTheirTurn.tableFooterView = UIView(frame: CGRectZero)
+        tblTheirTurn.layer.cornerRadius = 10
+        tblTheirTurn.clipsToBounds = true
+        tblTheirTurn.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -253,11 +256,6 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     {
         lblTheirTurn.hidden = false
         tblTheirTurn.hidden = false
-    }
-    
-    @IBAction func btnBackPressed(sender: AnyObject)
-    {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func btnNewGamePressed(sender: AnyObject)
