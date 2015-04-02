@@ -77,20 +77,21 @@ struct RoundLogic
         pfRoundObj = game.currentRound.pfRoundObj
         
         var playerOne = pfRoundObj!.valueForKey("PlayerOne") as PFUser
-        var playerTwo = pfRoundObj!.valueForKey("PlayerTwo") as PFUser
         
         if(playerOne.objectId == user.objectId)
         {
             // player one finished turn
-            
             pfRoundObj!.setValue(true, forKey: "HasPlayerOnePlayed")
             pfRoundObj!.setValue(game.score, forKey: "PlayerOneScore")
-            pfRoundObj!.setObject(playerTwo, forKey: "TurnPlayer")
+            
+            if(pfRoundObj!.valueForKey("PlayerTwo") != nil)
+            {
+                pfRoundObj!.setObject(pfRoundObj!.valueForKey("PlayerTwo") as PFUser, forKey: "TurnPlayer")
+            }
         }
         else
         {
             // player two finished turn
-            
             pfRoundObj!.setValue(true, forKey: "HasPlayerTwoPlayed")
             pfRoundObj!.setValue(game.score, forKey: "PlayerTwoScore")
             pfRoundObj!.setObject(playerOne, forKey: "TurnPlayer")

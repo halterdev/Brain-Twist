@@ -84,6 +84,61 @@ struct GameLogic
         game.pfGameObj!.save()
     }
     
+    /**
+        Check if any Games currently exist that need an opponent
+    
+        :returns: bool
+    */
+    static func DoAnyGamesNeedAnOpponent() -> Bool
+    {
+        var obj = PFObject(className: "Game")
+        
+        var query = PFQuery(className: "Game")
+        query.whereKeyDoesNotExist("PlayerTwo")
+        query.whereKey("RoundNumber", equalTo: 1)
+        
+        obj = query.getFirstObject()
+        
+        return obj != nil
+    }
+    
+    /**
+        Get a Game that needs an opponent
+    
+        :returns gameObj PFObject
+    */
+    static func GetGameThatNeedsOpponent() -> PFObject
+    {
+        var obj = PFObject(className: "Game")
+        
+        var query = PFQuery(className: "Game")
+        query.whereKeyDoesNotExist("PlayerTwo")
+        query.whereKey("RoundNumber", equalTo: 1)
+        
+        obj = query.getFirstObject()
+        
+        return obj
+    }
+    
+    /**
+        Assign player two to a Game
+    
+        :param: user PFUser
+    */
+    static func AssignPlayerTwoToGame(#user: PFUser, gameObj: PFObject)
+    {
+        gameObj.setValue(user, forKey: "PlayerTwo")
+        gameObj.save()
+        
+        var query = PFQuery(className: "Round")
+        query.whereKey("Game", equalTo: gameObj)
+        query.whereKey("RoundNumber", equalTo: 1)
+        
+        var roundObj = query.getFirstObject() as PFObject
+        roundObj.setValue(user, forKey: "PlayerTwo")
+        roundObj.save()
+    }
+    
     static func UIColorFromRGB(colorCode: String, alpha: Float = 1.0) -> UIColor {
         var scanner = NSScanner(string:colorCode)
         var color:UInt32 = 0;

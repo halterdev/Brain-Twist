@@ -35,7 +35,22 @@ class GameViewController: UIViewController {
         
         if(pfGameObj == nil)
         {
-            gameScene.game.createGamePFObject()
+            var gameNeedingOpp = false
+            gameNeedingOpp = GameLogic.DoAnyGamesNeedAnOpponent()
+            
+            if(gameNeedingOpp)
+            {
+                var opponentObj = GameLogic.GetGameThatNeedsOpponent()
+                
+                GameLogic.AssignPlayerTwoToGame(user: PFUser.currentUser(), gameObj: opponentObj)
+                gameScene.game.setupGameWithPFObject(pfGameObj: opponentObj)
+                gameScene.game.getAndAssignRound()
+                
+            }
+            else
+            {
+                gameScene.game.createGamePFObject()
+            }
         }
         else
         {

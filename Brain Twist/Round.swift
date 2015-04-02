@@ -84,7 +84,7 @@ class Round
         if(isPlayerOne)
         {
             pfRoundObj?.setObject(PFUser.currentUser(), forKey: "PlayerOne")
-            pfRoundObj?.setObject(game?.pfGameObj?.valueForKey("PlayerTwo"), forKey: "PlayerTwo")
+            //pfRoundObj?.setObject(game?.pfGameObj?.valueForKey("PlayerTwo"), forKey: "PlayerTwo")
         }
         else
         {

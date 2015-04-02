@@ -32,9 +32,6 @@ class GameScene: SKScene {
         self.viewController = viewController
         
         super.init(size: size)
-        
-        //setupGame()
-        
     }
     
     override func update(currentTime: CFTimeInterval) {

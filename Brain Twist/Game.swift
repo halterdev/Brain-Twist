@@ -51,16 +51,8 @@ class Game
     */
     func createGamePFObject()
     {
-        if(false)
-        {
-            UserLogic.addUserToWaitList()
-        }
-        
-        var playerTwo = UserLogic.getOpponentFromWaitingList() as PFUser
-        
         pfGameObj = PFObject(className: "Game")
         pfGameObj!.setObject(PFUser.currentUser(), forKey: "PlayerOne")
-        pfGameObj!.setObject(playerTwo, forKey: "PlayerTwo")
         pfGameObj!.setValue(1, forKey: "RoundNumber")
         pfGameObj!.setValue(0, forKey: "PlayerOneWins")
         pfGameObj!.setValue(0, forKey: "PlayerTwoWins")

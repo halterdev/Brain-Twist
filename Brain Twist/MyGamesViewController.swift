@@ -129,6 +129,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         query.includeKey("Game")
         query.whereKey("TurnPlayer", equalTo: PFUser.currentUser())
         query.whereKey("IsFinished", equalTo: false)
+        query.whereKeyExists("PlayerTwo")
         
         query.findObjectsInBackgroundWithBlock
         {
@@ -161,6 +162,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 self.myTurnGameIds?.append(game.objectId)
                 self.myTurnStrings?.append("Round \(roundNumber) vs \(opponentName)")
+                
             }
             
             self.tblMyTurn.reloadData()
@@ -185,6 +187,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         query.includeKey("Game")
         query.whereKey("TurnPlayer", notEqualTo: PFUser.currentUser())
         query.whereKey("IsFinished", equalTo: false)
+        query.whereKeyExists("PlayerTwo")
         
         query.findObjectsInBackgroundWithBlock
             {
@@ -235,6 +238,10 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         myTurnGameIds = nil
         myTurnStrings = nil
+        theirTurnStrings = nil
+        
+        tblMyTurn.reloadData()
+        tblTheirTurn.reloadData()
         
         loadMyTurns()
         loadTheirTurns()
