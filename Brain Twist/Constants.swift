@@ -36,6 +36,10 @@ struct Constants
         static let ColorBlue = 1
         static let ColorGreen = 2
         
+        static let FontColorRed = 0
+        static let FontColorBlue = 1
+        static let FontColorGreen = 2
+        
         static let NumberOfColors = 3
     }
     

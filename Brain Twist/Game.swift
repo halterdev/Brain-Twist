@@ -121,30 +121,37 @@ class Game
         var result = ""
         var isColor = true
         
-        if(currentRound.targetText? != nil)
+        if(currentRound.roundNumber < 3)
         {
-            color = currentRound.targetText!
-            result = "Tap the squares that say \(color)!"
+            if(currentRound.targetText? != nil)
+            {
+                color = currentRound.targetText!
+                result = "Tap the squares that say \(color)!"
+            }
+            else if(currentRound.targetColor? != nil)
+            {
+                if(currentRound.targetColor! == UIColor.redColor())
+                {
+                    color = "Red"
+                }
+                else if(currentRound.targetColor! == UIColor.blueColor())
+                {
+                    color = "Blue"
+                }
+                else
+                {
+                    color = "Green"
+                }
+            }
+            
+            if(result == "")
+            {
+                result = "Tap the \(color) squares!"
+            }
         }
-        else if(currentRound.targetColor? != nil)
+        else
         {
-            if(currentRound.targetColor! == UIColor.redColor())
-            {
-                color = "Red"
-            }
-            else if(currentRound.targetColor! == UIColor.blueColor())
-            {
-                color = "Blue"
-            }
-            else
-            {
-                color = "Green"
-            }
-        }
-        
-        if(result == "")
-        {
-            result = "Tap the \(color) squares!"
+            result = "Tap squares with \(color) font!"
         }
         
         return result
@@ -220,18 +227,32 @@ class Game
     {
         var result = false
         
-        if(currentRound.targetText != nil)
+        if(currentRound.roundNumber < 3)
         {
-            if(square.text.text == currentRound.targetText)
+            if(currentRound.targetText != nil)
             {
-                result = true
+                if(square.text.text == currentRound.targetText)
+                {
+                    result = true
+                }
+            }
+            else if(currentRound.targetColor != nil)
+            {
+                if(square.color == currentRound.targetColor)
+                {
+                    result = true
+                }
             }
         }
-        else if(currentRound.targetColor != nil)
+        else
         {
-            if(square.color == currentRound.targetColor)
+            // round three goes by color of the font in the square
+            if(currentRound.targetColor != nil)
             {
-                result = true;
+                if(square.text.fontColor == currentRound.targetColor)
+                {
+                    result = true
+                }
             }
         }
         

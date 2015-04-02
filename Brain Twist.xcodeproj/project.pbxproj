@@ -191,8 +191,6 @@
 				5882B22C1AA3944E0062F58C /* AppDelegate.swift */,
 				5882B2321AA3944E0062F58C /* GameViewController.swift */,
 				5882B2341AA3944E0062F58C /* Main.storyboard */,
-				58C69CA51ACB8D84001817C9 /* game.png */,
-				58C69CA61ACB8D84001817C9 /* home.png */,
 				5882B2371AA3944E0062F58C /* Images.xcassets */,
 				5882B2391AA3944E0062F58C /* LaunchScreen.xib */,
 				5882B22A1AA3944E0062F58C /* Supporting Files */,
@@ -266,6 +264,8 @@
 		58C69B081ACB8A92001817C9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				58C69CA61ACB8D84001817C9 /* home.png */,
+				58C69CA51ACB8D84001817C9 /* game.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";

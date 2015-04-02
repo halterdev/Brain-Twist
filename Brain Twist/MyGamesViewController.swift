@@ -106,15 +106,18 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        var query = PFQuery(className: "Game")
-        query.whereKey("objectId", equalTo: myTurnGameIds![indexPath.row])
-        
-        var gameObj = query.getFirstObject()
-        
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
-        vc.pfGameObj = gameObj
-        
-        self.presentViewController(vc, animated: true, completion: nil)
+        if(tableView == tblMyTurn)
+        {
+            var query = PFQuery(className: "Game")
+            query.whereKey("objectId", equalTo: myTurnGameIds![indexPath.row])
+            
+            var gameObj = query.getFirstObject()
+            
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
+            vc.pfGameObj = gameObj
+            
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
     }
     
     /**

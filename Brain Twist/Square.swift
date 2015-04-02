@@ -49,10 +49,10 @@ class Square
         drawnYet = false
         dead = false
         
+        setColor()
+        
         generateXYCoords()
         generateText()
-        
-        setColor()
     }
     
     /**
@@ -198,11 +198,41 @@ class Square
         }
         
         text.fontSize = 15
-        if(text.text == "Green")
-        {
-            //text.fontSize = 12
-        }
         text.fontName = "AvenirNext-Bold";
-        text.color = UIColor.whiteColor()
+        
+        var randomNum = Int(arc4random_uniform(2))
+        if(color == UIColor.redColor())
+        {
+            if(randomNum == 0)
+            {
+                text.fontColor = SKColor.blueColor()
+            }
+            else
+            {
+                text.fontColor = SKColor.greenColor()
+            }
+        }
+        else if (color == UIColor.blueColor())
+        {
+            if(randomNum == 0)
+            {
+                text.fontColor = SKColor.redColor()
+            }
+            else
+            {
+                text.fontColor = SKColor.greenColor()
+            }
+        }
+        else
+        {
+            if(randomNum == 0)
+            {
+                text.fontColor = SKColor.redColor()
+            }
+            else
+            {
+                text.fontColor = SKColor.blueColor()
+            }
+        }
     }
 }
