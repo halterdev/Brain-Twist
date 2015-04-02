@@ -86,7 +86,6 @@ class MainMenuViewController: UIViewController
                     self.user = PFUser.currentUser()
                     self.setMainMenu(loggedIn: true)
                     self.performSegueWithIdentifier("loggedInSegue", sender: self)
-                    
                 }
                 else
                 {

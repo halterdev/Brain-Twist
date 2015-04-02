@@ -18,25 +18,20 @@ struct UserLogic
         :param: password String
         :returns: String - Empty if success, otherwise the error
     */
-    static func register(#email: String, username: String, password: String) -> String
+    static func register(#email: String, username: String, password: String, vc: UIViewController) -> Bool
     {
-        var result = ""
+        var result = true
         var user = PFUser()
         
         user.email = email
         user.username = username
         user.password = password
+        user.setValue(0, forKey: "GamesPlayed")
+        user.setValue(0, forKey: "Wins")
+        user.setValue(0, forKey: "Losses")
+        user.setValue(5, forKey: "Coins")
         
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool!, error: NSError!) -> Void in
-            if error == nil {
-                // user was successfully registered
-                
-            } else {
-                // error w/ registration
-                result = error.debugDescription
-            }
-        }
+        result = user.signUp()
         
         return result
     }
@@ -81,5 +76,39 @@ struct UserLogic
         
         result = user.username
         return result
+    }
+    
+    /**
+        Add a Win to a User's wins
+    
+        :param: user PFUser
+    */
+    static func AddWin(#user: PFUser)
+    {
+        var gamesPlayed = user.valueForKey("GamesPlayed") as Int
+        gamesPlayed = gamesPlayed++
+        
+        var wins = user.valueForKey("Wins") as Int
+        wins = wins++
+        
+        user.setValue(wins, forKey: "Wins")
+        user.setValue(gamesPlayed, forKey: "GamesPlayed")
+        user.save()
+    }
+    
+    /**
+        Add a Loss to a User's Losses
+    */
+    static func AddLoss(#user: PFUser)
+    {
+        var gamesPlayed = user.valueForKey("GamesPlayed") as Int
+        gamesPlayed = gamesPlayed++
+        
+        var losses = user.valueForKey("Losses") as Int
+        losses = losses++
+        
+        user.setValue(losses, forKey: "Losses")
+        user.setValue(gamesPlayed, forKey: "GamesPlayed")
+        user.save()
     }
 }

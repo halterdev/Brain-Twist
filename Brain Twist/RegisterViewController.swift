@@ -14,29 +14,46 @@ class RegisterViewController: UIViewController
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
-    @IBOutlet weak var lblEmailStar: UILabel!
-    @IBOutlet weak var lblUsernamStar: UILabel!
-    @IBOutlet weak var lblPasswordStar: UILabel!
+    @IBOutlet weak var btnRegister: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     
-    @IBOutlet weak var lblErrorMsg: UILabel!
+    @IBOutlet weak var lblError: UILabel!
     
     var mainController: MainMenuViewController!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
+        
+        txtEmail.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        txtUsername.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        txtPassword.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        
+        btnRegister.layer.cornerRadius = 10
+        btnRegister.clipsToBounds = true
+        btnRegister.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        
+        btnCancel.layer.cornerRadius = 10
+        btnCancel.clipsToBounds = true
+        btnCancel.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
     }
     
-    @IBAction func btnRegisterPressed(sender: AnyObject)
+    @IBAction func btnRegisterPress(sender: AnyObject)
     {
-        
-        var result = UserLogic.register(email: txtEmail.text, username: txtUsername.text, password: txtPassword.text)
-        if(result == "")
+        var result = UserLogic.register(email: txtEmail.text, username: txtUsername.text, password: txtPassword.text, vc: self)
+        if(result)
         {
             // successful login
-            mainController.setMainMenu(loggedIn: true)
-            self.dismissViewControllerAnimated(true, completion: nil)
-            self.presentViewController(GameViewController(), animated: true, completion: nil)
+            //mainController.setMainMenu(loggedIn: true)
+            
+            self.performSegueWithIdentifier("registeredSegue", sender: self)
+            //self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else
+        {
+            lblError.hidden = false
         }
     }
     

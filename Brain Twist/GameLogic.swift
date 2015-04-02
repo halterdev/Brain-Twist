@@ -75,10 +75,16 @@ struct GameLogic
         if(p1Wins > p2Wins)
         {
             game.pfGameObj!.setObject(p1, forKey: "Winner")
+            
+            UserLogic.AddWin(user: p1)
+            UserLogic.AddLoss(user: p2)
         }
         else
         {
             game.pfGameObj!.setObject(p2, forKey: "Winner")
+            
+            UserLogic.AddWin(user: p2)
+            UserLogic.AddLoss(user: p1)
         }
         
         game.pfGameObj!.save()
