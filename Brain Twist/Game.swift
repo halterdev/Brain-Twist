@@ -143,6 +143,18 @@ class Game
         }
         else
         {
+            if(currentRound.targetColor! == UIColor.redColor())
+            {
+                color = "Red"
+            }
+            else if(currentRound.targetColor! == UIColor.blueColor())
+            {
+                color = "Blue"
+            }
+            else
+            {
+                color = "Green"
+            }
             result = "Tap squares with \(color) font!"
         }
         
