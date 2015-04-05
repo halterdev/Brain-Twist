@@ -26,14 +26,46 @@ struct UserLogic
         user.email = email
         user.username = username
         user.password = password
-        user.setValue(0, forKey: "GamesPlayed")
-        user.setValue(0, forKey: "Wins")
-        user.setValue(0, forKey: "Losses")
-        user.setValue(5, forKey: "Coins")
         
         result = user.signUp()
         
+        InsertUserStatRow(user: user)
+        InsertUserCoinsRow(user: user)
+        
         return result
+    }
+    
+    /**
+        Insert the User's initial UserStats row for future use
+    
+        :param: user PFUser
+    */
+    static func InsertUserStatRow(#user: PFUser)
+    {
+        var userStats = PFObject(className: "UserStats")
+        
+        userStats.setObject(user, forKey: "User")
+        userStats.setValue(0, forKey: "GamesPlayed")
+        userStats.setValue(0, forKey: "Wins")
+        userStats.setValue(0, forKey: "Losses")
+        userStats.setValue(0, forKey: "Ties")
+        
+        userStats.save()
+    }
+    
+    /**
+        Insert the User's initial UserCoins row
+    
+        :param: user PFUser
+    */
+    static func InsertUserCoinsRow(#user: PFUser)
+    {
+        var userCoins = PFObject(className: "UserCoins")
+        
+        userCoins.setObject(user, forKey: "User")
+        userCoins.setValue(Constants.Game.InitialCoins, forKey: "Coins")
+        
+        userCoins.save()
     }
     
     static func addUserToWaitList()
@@ -85,15 +117,17 @@ struct UserLogic
     */
     static func AddWin(#user: PFUser)
     {
-        var gamesPlayed = user.valueForKey("GamesPlayed") as Int
-        gamesPlayed = gamesPlayed++
+        var query = PFQuery(className: "UserStats")
+        query.whereKey("User", equalTo: user)
         
-        var wins = user.valueForKey("Wins") as Int
-        wins = wins++
+        var winnerStats = query.getFirstObject()
         
-        user.setValue(wins, forKey: "Wins")
-        user.setValue(gamesPlayed, forKey: "GamesPlayed")
-        user.save()
+        var gamesPlayed = (winnerStats.valueForKey("GamesPlayed") as Int) + 1
+        var wins = (winnerStats.valueForKey("Wins") as Int) + 1
+        
+        winnerStats.setValue(gamesPlayed, forKey: "GamesPlayed")
+        winnerStats.setValue(wins, forKey: "Wins")
+        winnerStats.save()
     }
     
     /**
@@ -101,14 +135,16 @@ struct UserLogic
     */
     static func AddLoss(#user: PFUser)
     {
-        var gamesPlayed = user.valueForKey("GamesPlayed") as Int
-        gamesPlayed = gamesPlayed++
+        var query = PFQuery(className: "UserStats")
+        query.whereKey("User", equalTo: user)
         
-        var losses = user.valueForKey("Losses") as Int
-        losses = losses++
+        var loserStats = query.getFirstObject()
         
-        user.setValue(losses, forKey: "Losses")
-        user.setValue(gamesPlayed, forKey: "GamesPlayed")
-        user.save()
+        var gamesPlayed = (loserStats.valueForKey("GamesPlayed") as Int) + 1
+        var losses = (loserStats.valueForKey("Losses") as Int) + 1
+        
+        loserStats.setValue(gamesPlayed, forKey: "GamesPlayed")
+        loserStats.setValue(losses, forKey: "Losses")
+        loserStats.save()
     }
 }
