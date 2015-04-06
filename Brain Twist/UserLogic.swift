@@ -147,4 +147,55 @@ struct UserLogic
         loserStats.setValue(losses, forKey: "Losses")
         loserStats.save()
     }
+    
+    /**
+        Subtract a Coin from the User's Coin total
+    
+        :param: user PFUser
+    */
+    static func SubtractCoin(#user: PFUser)
+    {
+        var query = PFQuery(className: "UserCoins")
+        query.whereKey("User", equalTo: user)
+        
+        var coinRow = query.getFirstObject()
+        
+        var coins = (coinRow.valueForKey("Coins") as Int) - 1
+        
+        coinRow.setValue(coins, forKey: "Coins")
+        coinRow.save()
+    }
+    
+    /** 
+        Get the number of Coins a User has
+        
+        :param: user PFUser
+        :returns: coins Int
+    */
+    static func GetUsersCoinCount(#user: PFUser) -> Int
+    {
+        var result = 0
+        
+        var query = PFQuery(className: "UserCoins")
+        query.whereKey("User", equalTo: user)
+        
+        var coinRow = query.getFirstObject()
+        
+        result = coinRow.valueForKey("Coins") as Int
+        return result
+    }
+    
+    /**
+        Get a User's stat row
+    
+        :param: user PFUser
+        :returns: stat PFObject
+    */
+    static func GetUsersStatRow(#user: PFUser) -> PFObject
+    {
+        var query = PFQuery(className: "UserStats")
+        query.whereKey("User", equalTo: user)
+        
+        return query.getFirstObject()
+    }
 }

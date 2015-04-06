@@ -183,6 +183,7 @@ class GameScene: SKScene {
                     if(!done)
                     {
                         game.updateGameForEndOfCurrentTurn(PFUser.currentUser())
+                        UserLogic.SubtractCoin(user: PFUser.currentUser())
                         
                         if(game.currentRound.isRoundOver())
                         {

@@ -26,6 +26,15 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var coinsView: UIView!
+    @IBOutlet weak var coin1: UIImageView!
+    @IBOutlet weak var coin2: UIImageView!
+    @IBOutlet weak var coin3: UIImageView!
+    @IBOutlet weak var coin4: UIImageView!
+    @IBOutlet weak var coin5: UIImageView!
+    
+    @IBOutlet weak var btnPurchaseCoins: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +59,10 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblTheirTurn.layer.cornerRadius = 10
         tblTheirTurn.clipsToBounds = true
         tblTheirTurn.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        
+        coinsView.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        coinsView.layer.cornerRadius = 10
+        coinsView.clipsToBounds = true
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -245,12 +258,16 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         loadMyTurns()
         loadTheirTurns()
+        
+        setCoins()
     }
     
     private func hideYoureTableInfo()
     {
-        lblYoureTurn.hidden = true
         tblMyTurn.hidden = true
+        
+        lblYoureTurn.hidden = false
+        lblYoureTurn.text = "Start a New Game!"
     }
     private func showYoureTableInfo()
     {
@@ -268,10 +285,79 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblTheirTurn.hidden = false
     }
     
+    private func setCoins()
+    {
+        var coins = UserLogic.GetUsersCoinCount(user: PFUser.currentUser())
+        
+        if(coins == 5)
+        {
+            coin1.hidden = false
+            coin2.hidden = false
+            coin3.hidden = false
+            coin4.hidden = false
+            coin5.hidden = false
+        }
+        else if (coins == 4)
+        {
+            coin1.hidden = false
+            coin2.hidden = false
+            coin3.hidden = false
+            coin4.hidden = false
+            
+            coin5.hidden = true
+        }
+        else if (coins == 3)
+        {
+            coin1.hidden = false
+            coin2.hidden = false
+            coin3.hidden = false
+            
+            coin4.hidden = true
+            coin5.hidden = true
+        }
+        else if (coins == 2)
+        {
+            coin1.hidden = false
+            coin2.hidden = false
+            
+            coin3.hidden = true
+            coin4.hidden = true
+            coin5.hidden = true
+        }
+        else if (coins == 1)
+        {
+            coin1.hidden = false
+            
+            coin2.hidden = true
+            coin3.hidden = true
+            coin4.hidden = true
+            coin5.hidden = true
+        }
+        else
+        {
+            coin1.hidden = true
+            coin2.hidden = true
+            coin3.hidden = true
+            coin4.hidden = true
+            coin5.hidden = true
+            
+            btnPurchaseCoins.hidden = false
+        }
+    }
+    
     @IBAction func btnNewGamePressed(sender: AnyObject)
     {
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        var coins = UserLogic.GetUsersCoinCount(user: PFUser.currentUser())
+        
+        if(coins > 0)
+        {
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+        else
+        {
+            
+        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView)
