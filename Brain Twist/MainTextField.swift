@@ -11,13 +11,10 @@ import UIKit
 
 class MainTextField: UITextField
 {
+    
     required init(coder aDecoder: NSCoder) {
+       
         super.init(coder: aDecoder)
-        self.layer.cornerRadius = 5.0;
-        self.layer.borderColor = UIColor.grayColor().CGColor
-        self.layer.borderWidth = 1.5
-        self.backgroundColor = UIColor.blueColor()
-        self.textColor = UIColor.whiteColor()
-        self.tintColor = UIColor.purpleColor()
+       
     }
 }

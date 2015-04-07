@@ -18,13 +18,17 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tblMyTurn: UITableView!
     @IBOutlet weak var tblTheirTurn: UITableView!
+    @IBOutlet weak var lblNoGames: UILabel!
     
     var myTurnGameIds: [String]?
     var myTurnStrings: [String]?
     
     var theirTurnStrings: [String]?
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var breakBarView: UIView!
+    
+    @IBOutlet weak var segment: UISegmentedControl!
     
     @IBOutlet weak var coinsView: UIView!
     @IBOutlet weak var coin1: UIImageView!
@@ -38,10 +42,11 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
-        scrollView.showsHorizontalScrollIndicator = false
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
         
-        scrollView.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
+        topBarView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        
+        breakBarView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
         btnNewGame.layer.cornerRadius = 10
         btnNewGame.clipsToBounds = true
@@ -179,15 +184,6 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
             self.tblMyTurn.reloadData()
-            
-            if(self.myTurnGameIds? != nil && self.myTurnGameIds?.count > 0)
-            {
-                self.showYoureTableInfo()
-            }
-            else
-            {
-                self.hideYoureTableInfo()
-            }
         }
     }
     
@@ -234,21 +230,16 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 self.tblTheirTurn.reloadData()
-                
-                if(self.theirTurnStrings? != nil && self.theirTurnStrings?.count > 0)
-                {
-                    self.showTheirTableInfo()
-                }
-                else
-                {
-                    self.hideTheirTableInfo()
-                }
             }
+    }
+    
+    @IBAction func segmentChanged(sender: AnyObject)
+    {
+        setTables()
     }
     
     override func viewWillAppear(animated: Bool)
     {
-        
         myTurnGameIds = nil
         myTurnStrings = nil
         theirTurnStrings = nil
@@ -259,30 +250,52 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadMyTurns()
         loadTheirTurns()
         
+        setTables()
+        
         setCoins()
     }
     
-    private func hideYoureTableInfo()
+    private func setTables()
     {
-        tblMyTurn.hidden = true
-        
-        lblYoureTurn.hidden = false
-        lblYoureTurn.text = "Start a New Game!"
-    }
-    private func showYoureTableInfo()
-    {
-        lblYoureTurn.hidden = false
-        tblMyTurn.hidden = false
-    }
-    private func hideTheirTableInfo()
-    {
-        lblTheirTurn.hidden = true
-        tblTheirTurn.hidden = true
-    }
-    private func showTheirTableInfo()
-    {
-        lblTheirTurn.hidden = false
-        tblTheirTurn.hidden = false
+        if(segment.selectedSegmentIndex == 0)
+        {
+            // my turns selected
+            
+            if(myTurnGameIds?.count > 0)
+            {
+                lblNoGames.hidden = true
+                tblTheirTurn.hidden = true
+                
+                tblMyTurn.hidden = false
+            }
+            else
+            {
+                lblNoGames.text = "You do not have any turns!"
+                lblNoGames.hidden = false
+                tblTheirTurn.hidden = true
+                tblMyTurn.hidden = true
+            }
+        }
+        else
+        {
+            // opponents turns selected
+            
+            if(theirTurnStrings?.count > 0)
+            {
+                lblNoGames.hidden = true
+                tblMyTurn.hidden = true
+                
+                tblTheirTurn.hidden = false
+            }
+            else
+            {
+                lblNoGames.text = "You are not waiting on anybody!"
+                lblNoGames.hidden = false
+                
+                tblMyTurn.hidden = true
+                tblTheirTurn.hidden = false
+            }
+        }
     }
     
     private func setCoins()

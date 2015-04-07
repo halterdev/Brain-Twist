@@ -10,6 +10,8 @@ import Foundation
 
 class MainMenuViewController: UIViewController
 {
+    @IBOutlet weak var topBarView: UIView!
+    
     @IBOutlet weak var lblBrainTwist: UILabel!
     
     @IBOutlet weak var txtUsername: UITextField!
@@ -17,7 +19,6 @@ class MainMenuViewController: UIViewController
     
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnNotRegistered: UIButton!
-    @IBOutlet weak var btnGames: UIButton!
     
     var user: PFUser?
     
@@ -25,20 +26,24 @@ class MainMenuViewController: UIViewController
     {
         super.viewDidLoad()
         
-        self.view.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
+        
+        topBarView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
         lblBrainTwist.textColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         
         txtUsername.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         txtPassword.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         
-        btnLogin.layer.cornerRadius = 10
-        btnLogin.clipsToBounds = true
-        btnLogin.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        var usernamePadding = UIView(frame: CGRectMake(0, 0, 5, 20))
+        txtUsername.leftView = usernamePadding
+        txtUsername.leftViewMode = UITextFieldViewMode.Always
         
-        btnGames.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
-        btnGames.layer.cornerRadius = 10
-        btnGames.clipsToBounds = true
+        var passwordPadding = UIView(frame: CGRectMake(0, 0, 5, 20))
+        txtPassword.leftView = passwordPadding
+        txtPassword.leftViewMode = UITextFieldViewMode.Always
+        
+        btnLogin.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
         user = PFUser.currentUser()
         
@@ -70,8 +75,6 @@ class MainMenuViewController: UIViewController
             txtPassword.hidden = false
             btnLogin.hidden = false
             btnNotRegistered.hidden = false
-            
-            btnGames.hidden = true
         }
     }
     

@@ -20,9 +20,7 @@ class HomeViewController: UIViewController
     
     override func viewDidLoad()
     {
-        self.view.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
-        
-        //topView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
         
         setRecordLabel()
     }
@@ -35,6 +33,6 @@ class HomeViewController: UIViewController
         var losses = stats.valueForKey("Losses") as Int
         var draws = stats.valueForKey("Ties") as Int
         
-        lblRecord.text = "Wins \(wins) Losses \(losses) Draws \(draws)"
+        //lblRecord.text = "Wins \(wins) Losses \(losses) Draws \(draws)"
     }
 }
