@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientKey: "arrQASUECL8qg8dmDTZhZYtuAYPktoAzlJqdmaTR")
         
         UITabBar.appearance().backgroundColor = UIColor.whiteColor()
+        
         return true
     }
 

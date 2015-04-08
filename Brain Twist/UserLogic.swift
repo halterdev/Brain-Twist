@@ -64,6 +64,8 @@ struct UserLogic
         
         userCoins.setObject(user, forKey: "User")
         userCoins.setValue(Constants.Game.InitialCoins, forKey: "Coins")
+        userCoins.setValue(true, forKey: "IsFull")
+        userCoins.setValue(NSDate(), forKey: "LastCoinGenerated")
         
         userCoins.save()
     }
