@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("sEkR59F2n613NbMdJqEHSI4hsdGLyF0uasUZBhmG",
             clientKey: "arrQASUECL8qg8dmDTZhZYtuAYPktoAzlJqdmaTR")
         
-        UITabBar.appearance().backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        UITabBar.appearance().backgroundColor = UIColor.whiteColor()
         return true
     }
 

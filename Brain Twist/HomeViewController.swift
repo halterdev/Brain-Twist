@@ -13,14 +13,11 @@ class HomeViewController: UIViewController
 {
     @IBOutlet weak var topView: UIView!
     
-    @IBOutlet weak var image: UIImageView!
-    
-    @IBOutlet weak var lblUsername: UILabel!
-    @IBOutlet weak var lblRecord: UILabel!
-    
     override func viewDidLoad()
     {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
+        
+        topView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
         setRecordLabel()
     }

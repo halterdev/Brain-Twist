@@ -25,8 +25,8 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var theirTurnStrings: [String]?
     
-    @IBOutlet weak var topBarView: UIView!
-    @IBOutlet weak var breakBarView: UIView!
+    
+    @IBOutlet weak var topView: UIView!
     
     @IBOutlet weak var segment: UISegmentedControl!
     
@@ -44,13 +44,11 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
         
-        topBarView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
-        
-        breakBarView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        topView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
         btnNewGame.layer.cornerRadius = 10
         btnNewGame.clipsToBounds = true
-        btnNewGame.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
+        btnNewGame.backgroundColor = UIColor.whiteColor()
         
         tblMyTurn.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tblMyTurn.tableFooterView = UIView(frame: CGRectZero)
@@ -65,7 +63,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblTheirTurn.clipsToBounds = true
         tblTheirTurn.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         
-        coinsView.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        coinsView.backgroundColor = UIColor.whiteColor()
         coinsView.layer.cornerRadius = 10
         coinsView.clipsToBounds = true
     }
