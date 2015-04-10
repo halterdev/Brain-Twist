@@ -25,6 +25,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var theirTurnStrings: [String]?
     
+    var showAd = false
     
     @IBOutlet weak var topView: UIView!
     
@@ -251,6 +252,14 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         setTables()
         
         setCoins()
+        
+        if(showAd)
+        {
+            if(ALInterstitialAd.isReadyForDisplay())
+            {
+                ALInterstitialAd.show()
+            }
+        }
     }
     
     private func setTables()
@@ -363,6 +372,8 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(coins > 0)
         {
             var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
+            vc.myGamesVc = self
+            
             self.presentViewController(vc, animated: true, completion: nil)
         }
         else

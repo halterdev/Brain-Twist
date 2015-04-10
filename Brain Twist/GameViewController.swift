@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     
     var pfGameObj: PFObject?
     
+    var myGamesVc: MyGamesViewController?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -70,7 +72,6 @@ class GameViewController: UIViewController {
         {
             lblScore.text = "Score: \(gameScene.game.score)"
         }
-        
     }
 
     override func prefersStatusBarHidden() -> Bool
@@ -91,6 +92,7 @@ class GameViewController: UIViewController {
     
     func killGameScene()
     {
+        self.myGamesVc?.showAd = true
         self.gameScene = nil
         self.removeFromParentViewController()
     }

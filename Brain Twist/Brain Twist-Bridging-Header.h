@@ -3,3 +3,5 @@
 //
 
 #import <Parse/Parse.h>
+#import "ALSdk.h"
+#import "ALInterstitialAd.h"

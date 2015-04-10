@@ -19,7 +19,7 @@ class HomeViewController: UIViewController
         
         topView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
-        setRecordLabel()
+        //setRecordLabel()
     }
     
     private func setRecordLabel()

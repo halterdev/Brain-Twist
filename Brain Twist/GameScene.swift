@@ -228,6 +228,5 @@ class GameScene: SKScene {
         game.removeAllSquares()
         viewController.killGameScene()
         viewController.dismissViewControllerAnimated(true, completion: nil)
-        //myGamesViewController.loadMyTurns()
     }
 }
