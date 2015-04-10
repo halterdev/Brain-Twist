@@ -40,6 +40,12 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var btnPurchaseCoins: UIButton!
     
+    var coinTimer = NSTimer()
+    var coinMins: Int?
+    var coinSeconds: Int?
+    
+    @IBOutlet weak var lblCoinTimer: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -363,6 +369,38 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             btnPurchaseCoins.hidden = false
         }
+        
+        if(coins < 5)
+        {
+            lblCoinTimer.hidden = false
+            
+            coinMins = 5
+            coinSeconds = 0
+            
+            coinTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
+        }
+        else
+        {
+            lblCoinTimer.hidden = true
+        }
+    }
+    
+    func subtractTime()
+    {
+        if(coinSeconds == 0)
+        {
+            if(coinMins > 0)
+            {
+                coinMins = coinMins! - 1
+                coinSeconds = 59
+            }
+        }
+        else
+        {
+            coinSeconds!--
+        }
+        
+        lblCoinTimer.text = "\(coinMins!):" + "\(coinSeconds!)"
     }
     
     @IBAction func btnNewGamePressed(sender: AnyObject)

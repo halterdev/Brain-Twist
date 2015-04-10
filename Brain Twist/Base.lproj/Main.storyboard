@@ -215,10 +215,10 @@
                                     <constraint firstItem="Aeg-dK-frN" firstAttribute="top" secondItem="HH3-pH-ENp" secondAttribute="top" id="z8V-wz-EI7"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvZ-5E-1eG">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvZ-5E-1eG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-tO-EWY">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcF-tO-EWY">
                                         <rect key="frame" x="206" y="101" width="190" height="37"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="coin.png" translatesAutoresizingMaskIntoConstraints="NO" id="h3h-XO-97g">
@@ -266,7 +266,7 @@
                                             <constraint firstItem="cga-6S-g40" firstAttribute="leading" secondItem="h3h-XO-97g" secondAttribute="trailing" constant="8" id="xe5-JC-bQK"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlQ-xQ-H4A">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlQ-xQ-H4A">
                                         <rect key="frame" x="204" y="63" width="190" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -282,13 +282,20 @@
                                             <action selector="btnNewGamePressed:" destination="gOD-5v-0uc" eventType="touchUpInside" id="tlm-fj-I1E"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ada-Df-gBk">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ada-Df-gBk">
                                         <rect key="frame" x="0.0" y="175" width="600" height="10"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIh-5B-2QE">
+                                        <rect key="frame" x="206" y="146" width="188" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="OIh-5B-2QE" firstAttribute="leading" secondItem="wcF-tO-EWY" secondAttribute="leading" id="4Nz-7f-1GT"/>
                                     <constraint firstAttribute="bottom" secondItem="ada-Df-gBk" secondAttribute="bottom" id="4YE-cT-SBo"/>
                                     <constraint firstItem="SlQ-xQ-H4A" firstAttribute="top" secondItem="SvZ-5E-1eG" secondAttribute="top" constant="63" id="5VB-fx-suV"/>
                                     <constraint firstItem="ada-Df-gBk" firstAttribute="top" secondItem="wcF-tO-EWY" secondAttribute="bottom" constant="37" id="B0F-hB-CN1"/>
@@ -296,9 +303,13 @@
                                     <constraint firstItem="ada-Df-gBk" firstAttribute="leading" secondItem="SvZ-5E-1eG" secondAttribute="leading" id="E5u-E9-nVE"/>
                                     <constraint firstAttribute="centerX" secondItem="wcF-tO-EWY" secondAttribute="centerX" constant="-1" id="I7M-Ex-n0w"/>
                                     <constraint firstAttribute="trailing" secondItem="ada-Df-gBk" secondAttribute="trailing" id="J7h-aG-zXi"/>
+                                    <constraint firstItem="OIh-5B-2QE" firstAttribute="leading" secondItem="SvZ-5E-1eG" secondAttribute="leading" constant="206" id="RYa-l8-Iv4"/>
                                     <constraint firstAttribute="trailing" secondItem="ada-Df-gBk" secondAttribute="trailing" id="W53-mp-QSD"/>
                                     <constraint firstAttribute="trailing" secondItem="ada-Df-gBk" secondAttribute="trailing" id="Xlb-PM-wRJ"/>
                                     <constraint firstItem="ada-Df-gBk" firstAttribute="centerX" secondItem="SvZ-5E-1eG" secondAttribute="centerX" id="czK-CH-Ibn"/>
+                                    <constraint firstItem="OIh-5B-2QE" firstAttribute="top" secondItem="wcF-tO-EWY" secondAttribute="bottom" constant="8" symbolic="YES" id="hIC-CB-Na3"/>
+                                    <constraint firstItem="OIh-5B-2QE" firstAttribute="trailing" secondItem="SlQ-xQ-H4A" secondAttribute="trailing" id="hnJ-iE-vKn"/>
+                                    <constraint firstItem="ada-Df-gBk" firstAttribute="top" secondItem="OIh-5B-2QE" secondAttribute="bottom" constant="8" symbolic="YES" id="lIP-ns-TiH"/>
                                     <constraint firstItem="wcF-tO-EWY" firstAttribute="top" secondItem="SlQ-xQ-H4A" secondAttribute="bottom" constant="8" id="lNT-zO-189"/>
                                     <constraint firstAttribute="centerX" secondItem="SlQ-xQ-H4A" secondAttribute="centerX" constant="1" id="rS9-S7-fuh"/>
                                     <constraint firstItem="ada-Df-gBk" firstAttribute="leading" secondItem="SvZ-5E-1eG" secondAttribute="leading" id="ugr-ma-hhA"/>
@@ -333,6 +344,7 @@
                         <outlet property="coin4" destination="ci2-bM-Mdi" id="Qel-oD-rbK"/>
                         <outlet property="coin5" destination="nmi-QI-7pg" id="YGz-Xu-9i3"/>
                         <outlet property="coinsView" destination="wcF-tO-EWY" id="OAB-qA-LVD"/>
+                        <outlet property="lblCoinTimer" destination="OIh-5B-2QE" id="XUR-tv-sSV"/>
                         <outlet property="lblNoGames" destination="IOi-QA-Dmx" id="DGS-PD-yft"/>
                         <outlet property="segment" destination="i7x-Zo-m1c" id="vo0-zE-6p6"/>
                         <outlet property="tblMyTurn" destination="Aeg-dK-frN" id="tNp-fF-k5n"/>
