@@ -17,7 +17,7 @@ struct GameLogic
     */
     static func UpdateRoundNumberOfGame(#game: Game)
     {
-        var roundNum = game.pfGameObj!.valueForKey("RoundNumber") as Int
+        var roundNum = game.pfGameObj!.valueForKey("RoundNumber") as! Int
         roundNum++
         
         game.pfGameObj!.setValue(roundNum, forKey: "RoundNumber")
@@ -45,14 +45,14 @@ struct GameLogic
     {
         if(didPlayerOneWin)
         {
-            var p1Score = game.pfGameObj!.valueForKey("PlayerOneWins") as Int
+            var p1Score = game.pfGameObj!.valueForKey("PlayerOneWins")as! Int
             p1Score++
             game.pfGameObj!.setValue(p1Score, forKey: "PlayerOneWins")
             game.pfGameObj!.save()
         }
         else
         {
-            var p2Score = game.pfGameObj!.valueForKey("PlayerTwoWins") as Int
+            var p2Score = game.pfGameObj!.valueForKey("PlayerTwoWins") as! Int
             p2Score++
             game.pfGameObj!.setValue(p2Score, forKey: "PlayerTwoWins")
             game.pfGameObj!.save()
@@ -66,11 +66,11 @@ struct GameLogic
     */
     static func SetWinnerOfGame(#game: Game)
     {
-        var p1 = game.pfGameObj!.valueForKey("PlayerOne") as PFUser
-        var p2 = game.pfGameObj!.valueForKey("PlayerTwo") as PFUser
+        var p1 = game.pfGameObj!.valueForKey("PlayerOne") as! PFUser
+        var p2 = game.pfGameObj!.valueForKey("PlayerTwo") as! PFUser
         
-        var p1Wins = game.pfGameObj!.valueForKey("PlayerOneWins") as Int
-        var p2Wins = game.pfGameObj!.valueForKey("PlayerTwoWins") as Int
+        var p1Wins = game.pfGameObj!.valueForKey("PlayerOneWins") as! Int
+        var p2Wins = game.pfGameObj!.valueForKey("PlayerTwoWins") as! Int
         
         if(p1Wins > p2Wins)
         {

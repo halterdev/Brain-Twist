@@ -41,6 +41,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var btnPurchaseCoins: UIButton!
     
     var coinTimer = NSTimer()
+    //var coinLastGenerated: NSDate?
     var coinMins: Int?
     var coinSeconds: Int?
     
@@ -81,7 +82,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if(tableView == tblMyTurn)
         {
-            cell = self.tblMyTurn.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+            cell = self.tblMyTurn.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
             
             if(myTurnStrings != nil)
             {
@@ -90,7 +91,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         else
         {
-            cell = self.tblTheirTurn.dequeueReusableCellWithIdentifier("cellopponent") as UITableViewCell
+            cell = self.tblTheirTurn.dequeueReusableCellWithIdentifier("cellopponent") as! UITableViewCell
             
             if(theirTurnStrings != nil)
             {
@@ -136,7 +137,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             var gameObj = query.getFirstObject()
             
-            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as! GameViewController
             vc.pfGameObj = gameObj
             
             self.presentViewController(vc, animated: true, completion: nil)
@@ -154,16 +155,19 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         query.whereKey("IsFinished", equalTo: false)
         query.whereKeyExists("PlayerTwo")
         
+        //query.findObjectsInBackgroundWithBlock(<#block: PFArrayResultBlock!##([AnyObject]!, NSError!) -> Void#>)
         query.findObjectsInBackgroundWithBlock
         {
             (rounds: [AnyObject]!, error: NSError!) -> Void in
             for round in rounds
             {
-                var game = round["Game"] as PFObject
-                var roundNumber = game.valueForKey("RoundNumber") as Int
+                var thisRound = round as! PFObject
+                var game = thisRound.objectForKey("Game") as! PFObject
+
+                var roundNumber = game.valueForKey("RoundNumber") as! Int
                 
-                var playerOne = game["PlayerOne"] as PFUser
-                var playerTwo = game["PlayerTwo"] as PFUser
+                var playerOne = game.objectForKey("PlayerOne") as! PFUser
+                var playerTwo = game.objectForKey("PlayerTwo") as! PFUser
                 
                 var opponent: PFUser
                 var opponentName: String
@@ -208,11 +212,13 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 (rounds: [AnyObject]!, error: NSError!) -> Void in
                 for round in rounds
                 {
-                    var game = round["Game"] as PFObject
-                    var roundNumber = game.valueForKey("RoundNumber") as Int
+                    var thisRound = round as! PFObject
+                    var game = thisRound.objectForKey("Game") as! PFObject
                     
-                    var playerOne = game["PlayerOne"] as PFUser
-                    var playerTwo = game["PlayerTwo"] as PFUser
+                    var roundNumber = game.valueForKey("RoundNumber") as! Int
+                    
+                    var playerOne = game.objectForKey("PlayerOne") as! PFUser
+                    var playerTwo = game.objectForKey("PlayerTwo") as! PFUser
                     
                     var opponent: PFUser
                     var opponentName: String
@@ -270,6 +276,16 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func setTables()
     {
+        myTurnGameIds = nil
+        myTurnStrings = nil
+        theirTurnStrings = nil
+        
+        tblMyTurn.reloadData()
+        tblTheirTurn.reloadData()
+        
+        loadMyTurns()
+        loadTheirTurns()
+        
         if(segment.selectedSegmentIndex == 0)
         {
             // my turns selected
@@ -367,21 +383,38 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             coin4.hidden = true
             coin5.hidden = true
             
-            btnPurchaseCoins.hidden = false
+            //btnPurchaseCoins.hidden = false
         }
         
-        if(coins < 5)
+        if(coins < Constants.Users.MaxCoins)
         {
-            lblCoinTimer.hidden = false
-            
-            coinMins = 5
-            coinSeconds = 0
-            
-            coinTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
+            setCoinTimer()
         }
         else
         {
             lblCoinTimer.hidden = true
+        }
+    }
+    
+    private func setCoinTimer()
+    {
+        var coinLastGenerated = UserLogic.GetCoinLastGeneratedTime(user: PFUser.currentUser())
+        var secondsSinceLastCoin = NSDate().secondsFrom(coinLastGenerated)
+        
+        if(secondsSinceLastCoin > (60 * Constants.Users.MinsToNextCoin))
+        {
+            // user is due for a new coin..
+            UserLogic.AddCoinToUserCoins(user: PFUser.currentUser())
+            setCoins()
+        }
+        else
+        {
+            var secondsLeft = (60 * 5) - secondsSinceLastCoin
+            
+            coinMins = secondsLeft / 60
+            coinSeconds = secondsLeft % 60
+            
+            coinTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         }
     }
     
@@ -393,6 +426,11 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             {
                 coinMins = coinMins! - 1
                 coinSeconds = 59
+            }
+            else
+            {
+                UserLogic.AddCoinToUserCoins(user: PFUser.currentUser())
+                setCoins()
             }
         }
         else
@@ -409,7 +447,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if(coins > 0)
         {
-            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as GameViewController
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcGame") as! GameViewController
             vc.myGamesVc = self
             
             self.presentViewController(vc, animated: true, completion: nil)
@@ -429,5 +467,19 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             scrollView.contentOffset = offset;
         }
 
+    }
+}
+
+extension NSDate
+{
+    func secondsFrom(date:NSDate) -> Int
+    {
+        return NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitSecond, fromDate: date, toDate: self, options: nil).second
+    }
+    
+    func offsetFrom(date:NSDate) -> String
+    {
+        if secondsFrom(date) > 0 { return "\(secondsFrom(date))s" }
+        return ""
     }
 }

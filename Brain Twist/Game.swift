@@ -59,8 +59,8 @@ class Game
         pfGameObj!.setValue(false, forKey: "IsFinished")
         
         pfGameObj!.saveInBackgroundWithBlock {
-            (success: Bool!, error: NSError!) -> Void in
-            if (success != nil)
+            (success: Bool, error: NSError!) -> Void in
+            if (success)
             {
                 // game object was successfully created, now create its round obj
                 self.currentRound.game = self
@@ -71,6 +71,8 @@ class Game
                 NSLog("%@", error)
             }
         }
+        
+        //pfGameObj!.saveInBackgroundWithBlock(PFBooleanResultBlo)
     }
     
     /**
@@ -115,12 +117,12 @@ class Game
         
         if(currentRound.roundNumber < 3)
         {
-            if(currentRound.targetText? != nil)
+            if(currentRound.targetText != nil)
             {
                 color = currentRound.targetText!
                 result = "Tap the squares that say \(color)!"
             }
-            else if(currentRound.targetColor? != nil)
+            else if(currentRound.targetColor != nil)
             {
                 if(currentRound.targetColor! == UIColor.redColor())
                 {

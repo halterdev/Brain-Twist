@@ -34,12 +34,12 @@ class Round
         self.game = game
         self.pfRoundObj = roundObj
         
-        roundNumber = roundObj.valueForKey("RoundNumber") as Int
-        setTargetColor(id: roundObj.valueForKey("TargetColorID") as Int)
+        roundNumber = roundObj.valueForKey("RoundNumber") as! Int
+        setTargetColor(id: roundObj.valueForKey("TargetColorID") as! Int)
         
         if(roundNumber > 1)
         {
-            setTargetText(color: roundObj.valueForKey("TargetText") as String)
+            setTargetText(color: roundObj.valueForKey("TargetText") as! String)
         }
     }
     
@@ -57,7 +57,7 @@ class Round
         
         loadCurrentRoundPFObject()
         
-        roundNumber = pfRoundObj?.valueForKey("RoundNumber") as Int
+        roundNumber = pfRoundObj?.valueForKey("RoundNumber") as! Int
     }
     
     init(game: Game, amIAddingANewRound: Bool)
@@ -102,8 +102,8 @@ class Round
         pfRoundObj?.setValue(false, forKey: "IsFinished")
         
         pfRoundObj?.saveInBackgroundWithBlock {
-            (success: Bool!, error: NSError!) -> Void in
-            if (success != nil)
+            (success: Bool, error: NSError!) -> Void in
+            if (success)
             {
                 // round was created successfully
             }
@@ -196,7 +196,7 @@ class Round
         
         if(pfRoundObj != nil)
         {
-            result = pfRoundObj?.valueForKey("NumberOfCorrectObjectsToShow") as Int
+            result = pfRoundObj?.valueForKey("NumberOfCorrectObjectsToShow") as! Int
         }
         
         return result
@@ -222,8 +222,8 @@ class Round
     {
         var result = false
         
-        var hasPlayerOnePlayed = pfRoundObj?.valueForKey("HasPlayerOnePlayed") as Bool
-        var hasPlayerTwoPlayed = pfRoundObj?.valueForKey("HasPlayerTwoPlayed") as Bool
+        var hasPlayerOnePlayed = pfRoundObj?.valueForKey("HasPlayerOnePlayed") as! Bool
+        var hasPlayerTwoPlayed = pfRoundObj?.valueForKey("HasPlayerTwoPlayed") as! Bool
         
         if(hasPlayerOnePlayed && hasPlayerTwoPlayed)
         {
@@ -246,6 +246,6 @@ class Round
     */
     func getCurrentRoundNumber() -> Int
     {
-        return pfRoundObj?.valueForKey("RoundNumber") as Int
+        return pfRoundObj?.valueForKey("RoundNumber") as! Int
     }
 }

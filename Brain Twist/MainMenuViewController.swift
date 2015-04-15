@@ -99,7 +99,7 @@ class MainMenuViewController: UIViewController
     
     @IBAction func btnGamesPressed(sender: AnyObject)
     {
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcMyGames") as MyGamesViewController
+        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcMyGames") as! MyGamesViewController
         
         //self.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(vc, animated: true, completion: nil)
@@ -109,7 +109,7 @@ class MainMenuViewController: UIViewController
     {
         if(segue.destinationViewController.isKindOfClass(RegisterViewController))
         {
-            var vc = segue.destinationViewController as RegisterViewController
+            var vc = segue.destinationViewController as! RegisterViewController
             vc.mainController = self
         }
     }

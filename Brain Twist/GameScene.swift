@@ -83,13 +83,14 @@ class GameScene: SKScene {
         }
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
         if(game.running)
         {
             for touch in touches
             {
-                let location = touch.locationInNode(self)
+                let thisTouch = touch as! UITouch
+                let location = thisTouch.locationInNode(self)
                 let touchedNode = nodeAtPoint(location)
                 touchedNode.position = location
                 
@@ -190,7 +191,7 @@ class GameScene: SKScene {
                             game.currentRound.markRoundFinished()
                             
                             var didPlayerOneWin = false
-                            if(game.currentRound.pfRoundObj!.valueForKey("PlayerOneScore") as Int > game.currentRound.pfRoundObj?.valueForKey("PlayerTwoScore") as Int)
+                            if(game.currentRound.pfRoundObj!.valueForKey("PlayerOneScore") as! Int > game.currentRound.pfRoundObj?.valueForKey("PlayerTwoScore") as! Int)
                             {
                                 didPlayerOneWin = true
                             }

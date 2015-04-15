@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().backgroundColor = UIColor.whiteColor()
         
+        
+        
         return true
     }
 

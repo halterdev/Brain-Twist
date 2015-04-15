@@ -63,11 +63,33 @@ struct UserLogic
         var userCoins = PFObject(className: "UserCoins")
         
         userCoins.setObject(user, forKey: "User")
-        userCoins.setValue(Constants.Game.InitialCoins, forKey: "Coins")
+        userCoins.setValue(Constants.Users.MaxCoins, forKey: "Coins")
         userCoins.setValue(true, forKey: "IsFull")
         userCoins.setValue(NSDate(), forKey: "LastCoinGenerated")
         
         userCoins.save()
+    }
+    
+    /**
+        Add a coin to the User's UserCoins row
+    
+        :param: user PFUser
+    */
+    static func AddCoinToUserCoins(#user: PFUser)
+    {
+        var userCoins = PFObject(className: "UserCoins")
+        
+        var query = PFQuery(className: "UserCoins")
+        query.whereKey("User", equalTo: user)
+        
+        var userCoinRow = query.getFirstObject()
+        
+        var coins = userCoinRow.valueForKey("Coins") as! Int
+        coins = coins + 1
+        
+        userCoinRow.setValue(coins, forKey: "Coins")
+        userCoinRow.setValue(NSDate(), forKey: "LastCoinGenerated")
+        userCoinRow.save()
     }
     
     static func addUserToWaitList()
@@ -78,7 +100,7 @@ struct UserLogic
         var query = PFQuery(className: PFUser.parseClassName())
         query.whereKey("username", equalTo: "breezy")
         
-        waitingUser = query.getFirstObject() as PFUser
+        waitingUser = query.getFirstObject() as! PFUser
         
         var userWaiting = PFObject(className: "UsersWaitingForGame")
         userWaiting.setObject(waitingUser, forKey: "User")
@@ -94,7 +116,7 @@ struct UserLogic
         query.includeKey("User")
         
         var userWaitingForGameRow = query.getFirstObject()
-        result = userWaitingForGameRow["User"] as PFUser
+        result = userWaitingForGameRow["User"] as! PFUser
         
         return result
     }
@@ -106,7 +128,7 @@ struct UserLogic
         var query = PFQuery(className: PFUser.parseClassName())
         query.whereKey("objectId", equalTo: id)
         
-        var user = query.getFirstObject() as PFUser
+        var user = query.getFirstObject() as! PFUser
         
         result = user.username
         return result
@@ -124,8 +146,8 @@ struct UserLogic
         
         var winnerStats = query.getFirstObject()
         
-        var gamesPlayed = (winnerStats.valueForKey("GamesPlayed") as Int) + 1
-        var wins = (winnerStats.valueForKey("Wins") as Int) + 1
+        var gamesPlayed = (winnerStats.valueForKey("GamesPlayed") as! Int) + 1
+        var wins = (winnerStats.valueForKey("Wins") as! Int) + 1
         
         winnerStats.setValue(gamesPlayed, forKey: "GamesPlayed")
         winnerStats.setValue(wins, forKey: "Wins")
@@ -142,8 +164,8 @@ struct UserLogic
         
         var loserStats = query.getFirstObject()
         
-        var gamesPlayed = (loserStats.valueForKey("GamesPlayed") as Int) + 1
-        var losses = (loserStats.valueForKey("Losses") as Int) + 1
+        var gamesPlayed = (loserStats.valueForKey("GamesPlayed") as! Int) + 1
+        var losses = (loserStats.valueForKey("Losses") as! Int) + 1
         
         loserStats.setValue(gamesPlayed, forKey: "GamesPlayed")
         loserStats.setValue(losses, forKey: "Losses")
@@ -162,7 +184,7 @@ struct UserLogic
         
         var coinRow = query.getFirstObject()
         
-        var coins = (coinRow.valueForKey("Coins") as Int) - 1
+        var coins = (coinRow.valueForKey("Coins") as! Int) - 1
         
         coinRow.setValue(coins, forKey: "Coins")
         coinRow.save()
@@ -183,7 +205,7 @@ struct UserLogic
         
         var coinRow = query.getFirstObject()
         
-        result = coinRow.valueForKey("Coins") as Int
+        result = coinRow.valueForKey("Coins") as! Int
         return result
     }
     
@@ -199,5 +221,20 @@ struct UserLogic
         query.whereKey("User", equalTo: user)
         
         return query.getFirstObject()
+    }
+    
+    /**
+        Get LastCoinGenerated date from User's UserCoins row
+    
+        :param: user PFUser
+    */
+    static func GetCoinLastGeneratedTime(#user: PFUser) -> NSDate
+    {
+        var query = PFQuery(className: "UserCoins")
+        query.whereKey("User", equalTo: user)
+        
+        var coinRow = query.getFirstObject()
+        
+        return coinRow.valueForKey("LastCoinGenerated") as! NSDate
     }
 }

@@ -51,7 +51,11 @@ struct Constants
         static let NumberOfRounds = 3
         
         static let NumberOfCorrectObjectsToShowPerRound = 10
-        
-        static let InitialCoins = 5
+    }
+    
+    struct Users
+    {
+        static let MaxCoins = 5
+        static let MinsToNextCoin = 5
     }
 }

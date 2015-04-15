@@ -66,7 +66,7 @@ class Square
         square.fillColor = color
         square.addChild(text)
         
-        var textNode = (square.children[0] as SKLabelNode)
+        var textNode = (square.children[0] as! SKLabelNode)
         textNode.position = generateCGPointForLabel()
         
         return square

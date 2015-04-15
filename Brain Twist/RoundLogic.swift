@@ -76,7 +76,7 @@ struct RoundLogic
         var pfRoundObj = PFObject(className: "Round")
         pfRoundObj = game.currentRound.pfRoundObj
         
-        var playerOne = pfRoundObj!.valueForKey("PlayerOne") as PFUser
+        var playerOne = pfRoundObj!.valueForKey("PlayerOne") as! PFUser
         
         if(playerOne.objectId == user.objectId)
         {
@@ -86,7 +86,7 @@ struct RoundLogic
             
             if(pfRoundObj!.valueForKey("PlayerTwo") != nil)
             {
-                pfRoundObj!.setObject(pfRoundObj!.valueForKey("PlayerTwo") as PFUser, forKey: "TurnPlayer")
+                pfRoundObj!.setObject(pfRoundObj!.valueForKey("PlayerTwo") as! PFUser, forKey: "TurnPlayer")
             }
         }
         else

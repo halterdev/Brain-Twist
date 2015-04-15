@@ -29,7 +29,7 @@ class GameViewController: UIViewController {
         lblScore.hidden = false
 
         // Create and configure the scene.
-        skView = self.view as SKView
+        skView = self.view as! SKView
         gameScene = GameScene(size: skView.bounds.size, viewController: self)
         gameScene.scaleMode = .AspectFill
 
@@ -66,7 +66,7 @@ class GameViewController: UIViewController {
         skView.presentScene(gameScene)
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent)
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent)
     {
         if(skView.scene as? GameScene != nil)
         {

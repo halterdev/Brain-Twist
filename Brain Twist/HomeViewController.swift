@@ -26,9 +26,9 @@ class HomeViewController: UIViewController
     {
         var stats = UserLogic.GetUsersStatRow(user: PFUser.currentUser())
         
-        var wins = stats.valueForKey("Wins") as Int
-        var losses = stats.valueForKey("Losses") as Int
-        var draws = stats.valueForKey("Ties") as Int
+        var wins = stats.valueForKey("Wins") as! Int
+        var losses = stats.valueForKey("Losses") as! Int
+        var draws = stats.valueForKey("Ties") as! Int
         
         //lblRecord.text = "Wins \(wins) Losses \(losses) Draws \(draws)"
     }
