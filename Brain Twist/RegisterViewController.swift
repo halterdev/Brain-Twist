@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var txtConfirmPassword: UITextField!
     
     @IBOutlet weak var btnRegister: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
@@ -25,31 +26,47 @@ class RegisterViewController: UIViewController
     {
         super.viewDidLoad()
         
-        self.view.backgroundColor = GameLogic.UIColorFromRGB("AA4F39", alpha: 1.0)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
         
         txtEmail.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         txtUsername.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         txtPassword.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
+        txtConfirmPassword.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         
-        btnRegister.layer.cornerRadius = 10
-        btnRegister.clipsToBounds = true
+        var emailPadding = UIView(frame: CGRectMake(0, 0, 5, 20))
+        txtEmail.leftView = emailPadding
+        txtEmail.leftViewMode = UITextFieldViewMode.Always
+        
+        var usernamePadding = UIView(frame: CGRectMake(0, 0, 5, 20))
+        txtUsername.leftView = usernamePadding
+        txtUsername.leftViewMode = UITextFieldViewMode.Always
+        
+        var passwordPadding = UIView(frame: CGRectMake(0, 0, 5, 20))
+        txtPassword.leftView = passwordPadding
+        txtPassword.leftViewMode = UITextFieldViewMode.Always
+        
+        var cpasswordPadding = UIView(frame: CGRectMake(0, 0, 5, 20))
+        txtConfirmPassword.leftView = cpasswordPadding
+        txtConfirmPassword.leftViewMode = UITextFieldViewMode.Always
+        
         btnRegister.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
-        
-        btnCancel.layer.cornerRadius = 10
-        btnCancel.clipsToBounds = true
-        btnCancel.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
     }
     
     @IBAction func btnRegisterPress(sender: AnyObject)
     {
-        var result = UserLogic.register(email: txtEmail.text, username: txtUsername.text, password: txtPassword.text, vc: self)
-        if(result)
+        if(txtEmail.text != "" && txtUsername.text != "" && txtPassword.text != "" && txtConfirmPassword.text != "")
         {
-            // successful login
-            //mainController.setMainMenu(loggedIn: true)
-            
-            self.performSegueWithIdentifier("registeredSegue", sender: self)
-            //self.dismissViewControllerAnimated(true, completion: nil)
+            var result = UserLogic.register(email: txtEmail.text, username: txtUsername.text, password: txtPassword.text, vc: self)
+            if(result)
+            {
+                // successful login
+                self.performSegueWithIdentifier("registeredSegue", sender: self)
+            }
+            else
+            {
+                lblError.text = "Email or Username is already used"
+                lblError.hidden = false
+            }
         }
         else
         {
