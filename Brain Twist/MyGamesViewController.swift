@@ -155,7 +155,6 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         query.whereKey("IsFinished", equalTo: false)
         query.whereKeyExists("PlayerTwo")
         
-        //query.findObjectsInBackgroundWithBlock(<#block: PFArrayResultBlock!##([AnyObject]!, NSError!) -> Void#>)
         query.findObjectsInBackgroundWithBlock
         {
             (rounds: [AnyObject]!, error: NSError!) -> Void in
@@ -189,7 +188,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 self.myTurnGameIds?.append(game.objectId)
                 self.myTurnStrings?.append("Round \(roundNumber) vs \(opponentName)")
-                
+                self.lblNoGames.hidden = true
             }
             
             self.tblMyTurn.reloadData()
@@ -201,11 +200,19 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     func loadTheirTurns()
     {
-        var query = PFQuery(className: "Round")
+        var withOpponent = PFQuery(className: "Round")
+        withOpponent.whereKey("TurnPlayer", equalTo: PFUser.currentUser())
+        withOpponent.whereKeyExists("PlayerTwo")
+        
+        
+        var noOpponentYet = PFQuery(className: "Round")
+        noOpponentYet.whereKey("PlayerOne", equalTo: PFUser.currentUser())
+        noOpponentYet.whereKeyDoesNotExist("PlayerTwo")
+        
+        
+        var query = PFQuery.orQueryWithSubqueries([withOpponent, noOpponentYet])
         query.includeKey("Game")
-        query.whereKey("TurnPlayer", notEqualTo: PFUser.currentUser())
         query.whereKey("IsFinished", equalTo: false)
-        query.whereKeyExists("PlayerTwo")
         
         query.findObjectsInBackgroundWithBlock
             {
@@ -218,26 +225,40 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                     var roundNumber = game.valueForKey("RoundNumber") as! Int
                     
                     var playerOne = game.objectForKey("PlayerOne") as! PFUser
-                    var playerTwo = game.objectForKey("PlayerTwo") as! PFUser
+                    var playerTwo = game.objectForKey("PlayerTwo") as? PFUser
                     
-                    var opponent: PFUser
-                    var opponentName: String
-                    if(playerOne != PFUser.currentUser())
+                    if(playerTwo != nil)
                     {
-                        opponent = playerOne
+                        var opponent: PFUser
+                        var opponentName: String
+                        if(playerOne != PFUser.currentUser())
+                        {
+                            opponent = playerOne
+                        }
+                        else
+                        {
+                            opponent = playerTwo!
+                        }
+                        opponentName = UserLogic.getUsernameWithObjectId(opponent.objectId)
+                        
+                        if(self.theirTurnStrings == nil)
+                        {
+                            self.theirTurnStrings = [String]()
+                        }
+                        
+                        self.theirTurnStrings?.append("Round \(roundNumber) vs \(opponentName)")
                     }
                     else
                     {
-                        opponent = playerTwo
+                        if(self.theirTurnStrings == nil)
+                        {
+                            self.theirTurnStrings = [String]()
+                        }
+                        
+                        self.theirTurnStrings?.append("Waiting for an Opponent...")
                     }
-                    opponentName = UserLogic.getUsernameWithObjectId(opponent.objectId)
                     
-                    if(self.theirTurnStrings == nil)
-                    {
-                        self.theirTurnStrings = [String]()
-                    }
-                    
-                    self.theirTurnStrings?.append("Round \(roundNumber) vs \(opponentName)")
+                    self.lblNoGames.hidden = true
                 }
                 
                 self.tblTheirTurn.reloadData()
@@ -251,18 +272,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(animated: Bool)
     {
-        myTurnGameIds = nil
-        myTurnStrings = nil
-        theirTurnStrings = nil
-        
-        tblMyTurn.reloadData()
-        tblTheirTurn.reloadData()
-        
-        loadMyTurns()
-        loadTheirTurns()
-        
         setTables()
-        
         setCoins()
         
         if(showAd)

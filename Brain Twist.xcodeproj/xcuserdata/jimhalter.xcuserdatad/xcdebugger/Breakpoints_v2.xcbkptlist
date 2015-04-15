@@ -105,22 +105,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450670472.311757"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Brain Twist/UserLogic.swift"
             timestampString = "449635024.596765"
             startingColumnNumber = "9223372036854775807"
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450670472.311757"
+            timestampString = "450754056.710078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "loadMyTurns()"
             landmarkType = "5">
             <Locations>
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450325207.89082"
+            timestampString = "450754056.710078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "loadMyTurns()"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450670472.311757"
+            timestampString = "450754056.710078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "loadMyTurns()"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450670472.311757"
+            timestampString = "450755647.13157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450671704.191933"
+            timestampString = "450755647.13157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "setCoins()"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450748513.135138"
+            timestampString = "450755647.13157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "subtractTime()"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450748513.135138"
+            timestampString = "450755647.13157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
             landmarkName = "MyGamesViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -330,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450671704.191933"
+            timestampString = "450755647.13157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "setCoins()"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450670472.311757"
+            timestampString = "450754056.710078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "loadTheirTurns()"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +346,139 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450670472.311757"
+            timestampString = "450754056.710078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "loadTheirTurns()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brain Twist/MyGamesViewController.swift"
+            timestampString = "450755647.13157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "setCoinTimer()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brain Twist/MyGamesViewController.swift"
+            timestampString = "450754056.710078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "loadTheirTurns()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Brain_Twist.MyGamesViewController.loadTheirTurns (Brain_Twist.MyGamesViewController)() -&gt; ()"
+                  moduleName = "Brain Twist"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Applications/Brain-Twist/Brain%20Twist/MyGamesViewController.swift"
+                  timestampString = "450753394.589201"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "2951">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Brain_Twist.MyGamesViewController.(loadTheirTurns (Brain_Twist.MyGamesViewController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "Brain Twist"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Applications/Brain-Twist/Brain%20Twist/MyGamesViewController.swift"
+                  timestampString = "450753394.589392"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "224"
+                  endingLineNumber = "224"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brain Twist/MyGamesViewController.swift"
+            timestampString = "450754056.710078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "loadTheirTurns()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brain Twist/MyGamesViewController.swift"
+            timestampString = "450754904.242928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "loadTheirTurns()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brain Twist/MyGamesViewController.swift"
+            timestampString = "450754056.710078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "loadTheirTurns()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brain Twist/MyGamesViewController.swift"
+            timestampString = "450754147.28111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "loadTheirTurns()"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,12 +490,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brain Twist/MyGamesViewController.swift"
-            timestampString = "450747231.398578"
+            timestampString = "450755647.13157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
-            landmarkName = "setCoinTimer()"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "setTables()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
