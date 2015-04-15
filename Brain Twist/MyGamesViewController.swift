@@ -71,6 +71,9 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblTheirTurn.clipsToBounds = true
         tblTheirTurn.backgroundColor = GameLogic.UIColorFromRGB("FFECE8", alpha: 1.0)
         
+        lblNoGames.text = ""
+        lblNoGames.hidden = true
+        
         coinsView.backgroundColor = UIColor.whiteColor()
         coinsView.layer.cornerRadius = 10
         coinsView.clipsToBounds = true
@@ -188,7 +191,11 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 self.myTurnGameIds?.append(game.objectId)
                 self.myTurnStrings?.append("Round \(roundNumber) vs \(opponentName)")
-                self.lblNoGames.hidden = true
+            }
+            
+            if(rounds.count == 0 && self.segment.selectedSegmentIndex == 0)
+            {
+                self.setNoGamesLabel(myTurns: true)
             }
             
             self.tblMyTurn.reloadData()
@@ -258,7 +265,10 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
                         self.theirTurnStrings?.append("Waiting for an Opponent...")
                     }
                     
-                    self.lblNoGames.hidden = true
+                    if(rounds.count == 0 && self.segment.selectedSegmentIndex == 1)
+                    {
+                        self.setNoGamesLabel(myTurns: false)
+                    }
                 }
                 
                 self.tblTheirTurn.reloadData()
@@ -290,6 +300,9 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         myTurnStrings = nil
         theirTurnStrings = nil
         
+        lblNoGames.hidden = true
+        lblNoGames.text = ""
+        
         tblMyTurn.reloadData()
         tblTheirTurn.reloadData()
         
@@ -299,18 +312,13 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(segment.selectedSegmentIndex == 0)
         {
             // my turns selected
-            
             if(myTurnGameIds?.count > 0)
             {
-                lblNoGames.hidden = true
                 tblTheirTurn.hidden = true
-                
                 tblMyTurn.hidden = false
             }
             else
             {
-                lblNoGames.text = "You do not have any turns!"
-                lblNoGames.hidden = false
                 tblTheirTurn.hidden = true
                 tblMyTurn.hidden = true
             }
@@ -318,22 +326,30 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         else
         {
             // opponents turns selected
-            
             if(theirTurnStrings?.count > 0)
             {
-                lblNoGames.hidden = true
                 tblMyTurn.hidden = true
-                
                 tblTheirTurn.hidden = false
             }
             else
             {
-                lblNoGames.text = "You are not waiting on anybody!"
-                lblNoGames.hidden = false
-                
                 tblMyTurn.hidden = true
                 tblTheirTurn.hidden = false
             }
+        }
+    }
+    
+    private func setNoGamesLabel(#myTurns: Bool)
+    {
+        if(myTurns)
+        {
+            lblNoGames.text = "You do not have any turns"
+            lblNoGames.hidden = false
+        }
+        else
+        {
+            lblNoGames.text = "You are not waiting on anybody"
+            lblNoGames.hidden = false
         }
     }
     
