@@ -19,17 +19,13 @@ class HomeViewController: UIViewController
         
         topView.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
-        //setRecordLabel()
     }
     
-    private func setRecordLabel()
+    @IBAction func btnLogoutPressed(sender: AnyObject)
     {
-        var stats = UserLogic.GetUsersStatRow(user: PFUser.currentUser())
+        PFUser.logOut()
         
-        var wins = stats.valueForKey("Wins") as! Int
-        var losses = stats.valueForKey("Losses") as! Int
-        var draws = stats.valueForKey("Ties") as! Int
-        
-        //lblRecord.text = "Wins \(wins) Losses \(losses) Draws \(draws)"
+        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("MainMenuViewController") as! MainMenuViewController
+        self.presentViewController(vc, animated: false, completion: nil)
     }
 }

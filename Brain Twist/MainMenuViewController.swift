@@ -45,36 +45,19 @@ class MainMenuViewController: UIViewController
         
         btnLogin.backgroundColor = GameLogic.UIColorFromRGB("FEB09E", alpha: 1.0)
         
-        user = PFUser.currentUser()
-        
-        setMainMenu(loggedIn: false)
+        lblBrainTwist.hidden = false
+        txtUsername.hidden = false
+        txtPassword.hidden = false
+        btnLogin.hidden = false
+        btnNotRegistered.hidden = false
     }
-    
-    /**
-    Set up the buttons that make up the Main Menu
-    
-    :params: loggedIn Bool - Is there a User logged in?
-    */
-    func setMainMenu(#loggedIn: Bool)
+
+    override func viewDidAppear(animated: Bool)
     {
-        if(loggedIn)
+        if(PFUser.currentUser() != nil)
         {
-            // setup screen for user that is logged in
-            lblBrainTwist.hidden = true
-            txtUsername.hidden = true
-            txtPassword.hidden = true
-            btnLogin.hidden = true
-            btnNotRegistered.hidden = true
-            
-        }
-        else
-        {
-            // set up screen for someone not logged in
-            lblBrainTwist.hidden = false
-            txtUsername.hidden = false
-            txtPassword.hidden = false
-            btnLogin.hidden = false
-            btnNotRegistered.hidden = false
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("MyTabBarController") as! MyTabBarController
+            self.presentViewController(vc, animated: true, completion: nil)
         }
     }
     
@@ -87,7 +70,6 @@ class MainMenuViewController: UIViewController
                 {
                     // successful login
                     self.user = PFUser.currentUser()
-                    self.setMainMenu(loggedIn: true)
                     self.performSegueWithIdentifier("loggedInSegue", sender: self)
                 }
                 else
@@ -100,8 +82,6 @@ class MainMenuViewController: UIViewController
     @IBAction func btnGamesPressed(sender: AnyObject)
     {
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("vcMyGames") as! MyGamesViewController
-        
-        //self.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(vc, animated: true, completion: nil)
     }
     

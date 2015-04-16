@@ -8,7 +8,7 @@
         <!--My Tab Bar Controller-->
         <scene sceneID="Zlx-mn-Mh3">
             <objects>
-                <tabBarController id="rNY-NE-YFu" customClass="MyTabBarController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MyTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rNY-NE-YFu" customClass="MyTabBarController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="lfP-7c-vMa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -27,7 +27,7 @@
         <!--Item-->
         <scene sceneID="NIi-p1-jca">
             <objects>
-                <viewController id="TQl-Fl-cSa" customClass="MainMenuViewController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TQl-Fl-cSa" customClass="MainMenuViewController" customModule="Brain_Twist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uyc-ox-GuF"/>
                         <viewControllerLayoutGuide type="bottom" id="b7H-4l-4sV"/>
@@ -531,23 +531,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yRH-ST-tbz">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgF-du-7ZP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgF-du-7ZP">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LE0-Gn-gcg">
-                                                <rect key="frame" x="0.0" y="175" width="600" height="10"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LE0-Gn-gcg">
+                                        <rect key="frame" x="0.0" y="175" width="600" height="10"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="FVn-gb-3ri"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
-                            </scrollView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LE0-Gn-gcg" secondAttribute="bottom" id="QR9-7N-CTe"/>
+                                    <constraint firstItem="LE0-Gn-gcg" firstAttribute="top" secondItem="kgF-du-7ZP" secondAttribute="top" constant="175" id="ie5-kH-19y"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcf-o4-lrd">
+                                <rect key="frame" x="535" y="193" width="49" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="0SU-nC-SYk"/>
+                                    <constraint firstAttribute="height" constant="30" id="D23-T8-ZKL"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnLogoutPressed:" destination="J1B-CI-ANQ" eventType="touchUpInside" id="fua-FH-BYv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kgF-du-7ZP" secondAttribute="trailing" id="GQT-je-dtE"/>
+                            <constraint firstItem="Hcf-o4-lrd" firstAttribute="trailing" secondItem="RrR-lM-Y1c" secondAttribute="trailingMargin" id="eUI-dB-3Ja"/>
+                            <constraint firstItem="kgF-du-7ZP" firstAttribute="top" secondItem="Pts-qq-Vft" secondAttribute="bottom" constant="-20" id="lOD-Sp-Eq7"/>
+                            <constraint firstItem="Hcf-o4-lrd" firstAttribute="top" secondItem="kgF-du-7ZP" secondAttribute="bottom" constant="8" id="ogc-9u-j1C"/>
+                            <constraint firstItem="kgF-du-7ZP" firstAttribute="leading" secondItem="RrR-lM-Y1c" secondAttribute="leading" id="yHS-QV-qzi"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home.png" selectedImage="home.png" id="J62-rN-wbG">
                         <userDefinedRuntimeAttributes>
@@ -560,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1C-8H-b1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1388" y="1693"/>
+            <point key="canvasLocation" x="-1439" y="1693"/>
         </scene>
     </scenes>
     <resources>
@@ -569,6 +592,6 @@
         <image name="home.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qHf-kf-0wy"/>
+        <segue reference="aqd-Gh-Bzq"/>
     </inferredMetricsTieBreakers>
 </document>
