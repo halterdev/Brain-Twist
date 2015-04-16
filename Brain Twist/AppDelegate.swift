@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientKey: "arrQASUECL8qg8dmDTZhZYtuAYPktoAzlJqdmaTR")
         
         ALSdk.initializeSdk()
+        
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("817c3cfc68dd52701c6dd5d3b812148c")
+        // Configure the SDK in here only!
+        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation() // This line is obsolete in the crash only build
         
         UITabBar.appearance().backgroundColor = UIColor.whiteColor()
         

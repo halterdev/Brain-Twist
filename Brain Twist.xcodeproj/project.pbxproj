@@ -49,6 +49,9 @@
 		5882B2541AA398EF0062F58C /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2531AA398EF0062F58C /* Square.swift */; };
 		5882B25A1AA3BBFD0062F58C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B2591AA3BBFD0062F58C /* Constants.swift */; };
 		5882B25C1AA407450062F58C /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5882B25B1AA407450062F58C /* Round.swift */; };
+		58B6C9A31AE0775800CEFF9B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B6C9A21AE0775800CEFF9B /* CoreText.framework */; };
+		58B6C9A51AE0775F00CEFF9B /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B6C9A41AE0775F00CEFF9B /* QuickLook.framework */; };
+		58B6C9A91AE078CF00CEFF9B /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B6C9A81AE078CF00CEFF9B /* HockeySDK.framework */; };
 		58C69B031ACB748A001817C9 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B021ACB748A001817C9 /* MainTextField.swift */; };
 		58C69B051ACB862D001817C9 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B041ACB862D001817C9 /* MyTabBarController.swift */; };
 		58C69B071ACB892B001817C9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C69B061ACB892B001817C9 /* HomeViewController.swift */; };
@@ -135,6 +138,9 @@
 		5882B2531AA398EF0062F58C /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		5882B2591AA3BBFD0062F58C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5882B25B1AA407450062F58C /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		58B6C9A21AE0775800CEFF9B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		58B6C9A41AE0775F00CEFF9B /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		58B6C9A81AE078CF00CEFF9B /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		58C69B021ACB748A001817C9 /* MainTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
 		58C69B041ACB862D001817C9 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		58C69B061ACB892B001817C9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B6C9A51AE0775F00CEFF9B /* QuickLook.framework in Frameworks */,
+				58B6C9A31AE0775800CEFF9B /* CoreText.framework in Frameworks */,
 				5861AA271AD6068800BE0973 /* Social.framework in Frameworks */,
 				5861AA251AD6061700BE0973 /* AssetsLibrary.framework in Frameworks */,
 				5861AA231AD605F800BE0973 /* Accounts.framework in Frameworks */,
@@ -163,6 +171,7 @@
 				5861AA151AD6027800BE0973 /* AdSupport.framework in Frameworks */,
 				587DAF991AA7EE17005960FD /* AudioToolbox.framework in Frameworks */,
 				587DAF9A1AA7EE17005960FD /* CFNetwork.framework in Frameworks */,
+				58B6C9A91AE078CF00CEFF9B /* HockeySDK.framework in Frameworks */,
 				587DAF9B1AA7EE17005960FD /* CoreGraphics.framework in Frameworks */,
 				587DAF9C1AA7EE17005960FD /* CoreLocation.framework in Frameworks */,
 				587DAF9D1AA7EE17005960FD /* libsqlite3.dylib in Frameworks */,
@@ -191,6 +200,9 @@
 		58483F711AA7EC9400993148 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58B6C9A81AE078CF00CEFF9B /* HockeySDK.framework */,
+				58B6C9A41AE0775F00CEFF9B /* QuickLook.framework */,
+				58B6C9A21AE0775800CEFF9B /* CoreText.framework */,
 				5861AA261AD6068800BE0973 /* Social.framework */,
 				5861AA241AD6061700BE0973 /* AssetsLibrary.framework */,
 				5861AA221AD605F800BE0973 /* Accounts.framework */,
@@ -389,6 +401,7 @@
 				5882B2231AA3944E0062F58C /* Sources */,
 				5882B2241AA3944E0062F58C /* Frameworks */,
 				5882B2251AA3944E0062F58C /* Resources */,
+				58B6C9A11AE0772100CEFF9B /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -481,6 +494,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58B6C9A11AE0772100CEFF9B /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5882B2231AA3944E0062F58C /* Sources */ = {
@@ -632,6 +662,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = "Brain Twist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -656,6 +687,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = "Brain Twist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
