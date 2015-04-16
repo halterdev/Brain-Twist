@@ -40,7 +40,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var btnPurchaseCoins: UIButton!
     
-    var coinTimer = NSTimer()
+    var coinTimer: NSTimer?
     //var coinLastGenerated: NSDate?
     var coinMins: Int?
     var coinSeconds: Int?
@@ -49,6 +49,8 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("setCoins"), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bkground.png")!)
         
@@ -294,6 +296,8 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
+    
     private func setTables()
     {
         myTurnGameIds = nil
@@ -353,7 +357,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    private func setCoins()
+    func setCoins()
     {
         var coins = UserLogic.GetUsersCoinCount(user: PFUser.currentUser())
         
@@ -364,6 +368,8 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             coin3.hidden = false
             coin4.hidden = false
             coin5.hidden = false
+            
+            lblCoinTimer.hidden = true
         }
         else if (coins == 4)
         {
@@ -408,8 +414,6 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             coin3.hidden = true
             coin4.hidden = true
             coin5.hidden = true
-            
-            //btnPurchaseCoins.hidden = false
         }
         
         if(coins < Constants.Users.MaxCoins)
@@ -440,12 +444,17 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             coinMins = secondsLeft / 60
             coinSeconds = secondsLeft % 60
             
-            coinTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
+            if(coinTimer == nil)
+            {
+                coinTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
+            }
         }
     }
     
     func subtractTime()
     {
+        var done = false
+        
         if(coinSeconds == 0)
         {
             if(coinMins > 0)
@@ -457,6 +466,7 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             {
                 UserLogic.AddCoinToUserCoins(user: PFUser.currentUser())
                 setCoins()
+                coinTimer?.invalidate()
             }
         }
         else
@@ -464,7 +474,18 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             coinSeconds!--
         }
         
-        lblCoinTimer.text = "\(coinMins!):" + "\(coinSeconds!)"
+        if(!done)
+        {
+            if(coinSeconds < 10)
+            {
+                lblCoinTimer.text = "\(coinMins!):" + "0\(coinSeconds!)"
+            }
+            else
+            {
+                lblCoinTimer.text = "\(coinMins!):" + "\(coinSeconds!)"
+            }
+            lblCoinTimer.hidden = false
+        }
     }
     
     @IBAction func btnNewGamePressed(sender: AnyObject)

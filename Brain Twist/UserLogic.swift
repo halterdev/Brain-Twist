@@ -92,35 +92,6 @@ struct UserLogic
         userCoinRow.save()
     }
     
-    static func addUserToWaitList()
-    {
-        var waitingUser = PFUser()
-        var done = false
-        
-        var query = PFQuery(className: PFUser.parseClassName())
-        query.whereKey("username", equalTo: "breezy")
-        
-        waitingUser = query.getFirstObject() as! PFUser
-        
-        var userWaiting = PFObject(className: "UsersWaitingForGame")
-        userWaiting.setObject(waitingUser, forKey: "User")
-        userWaiting.save()
-        
-    }
-    
-    static func getOpponentFromWaitingList() -> PFUser
-    {
-        var result = PFUser()
-        
-        var query = PFQuery(className: "UsersWaitingForGame")
-        query.includeKey("User")
-        
-        var userWaitingForGameRow = query.getFirstObject()
-        result = userWaitingForGameRow["User"] as! PFUser
-        
-        return result
-    }
-    
     static func getUsernameWithObjectId(id: String) -> String
     {
         var result: String
@@ -184,9 +155,14 @@ struct UserLogic
         
         var coinRow = query.getFirstObject()
         
-        var coins = (coinRow.valueForKey("Coins") as! Int) - 1
+        var coins = coinRow.valueForKey("Coins") as! Int
         
-        coinRow.setValue(coins, forKey: "Coins")
+        if(coins == 5)
+        {
+            coinRow.setValue(NSDate(), forKey: "LastCoinGenerated")
+        }
+        
+        coinRow.setValue(coins - 1, forKey: "Coins")
         coinRow.save()
     }
     

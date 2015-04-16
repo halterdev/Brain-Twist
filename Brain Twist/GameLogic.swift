@@ -100,6 +100,7 @@ struct GameLogic
         var obj = PFObject(className: "Game")
         
         var query = PFQuery(className: "Game")
+        query.whereKey("PlayerOne", notEqualTo: PFUser.currentUser())
         query.whereKeyDoesNotExist("PlayerTwo")
         query.whereKey("RoundNumber", equalTo: 1)
         
