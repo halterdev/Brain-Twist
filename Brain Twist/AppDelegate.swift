@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ALSdk.initializeSdk()
         
+        var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
+        var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
+        UIApplication.sharedApplication().registerUserNotificationSettings(setting);
+        UIApplication.sharedApplication().registerForRemoteNotifications();
+        
         BITHockeyManager.sharedHockeyManager().configureWithIdentifier("817c3cfc68dd52701c6dd5d3b812148c")
         // Configure the SDK in here only!
         BITHockeyManager.sharedHockeyManager().startManager()
@@ -30,11 +35,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().backgroundColor = UIColor.whiteColor()
         
-        
-        
         return true
     }
-
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+        var pfInstallation = PFInstallation.currentInstallation()
+        pfInstallation.setDeviceTokenFromData(deviceToken)
+        pfInstallation.channels = ["global"]
+        pfInstallation.save()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        PFPush.handlePush(userInfo)
+        
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

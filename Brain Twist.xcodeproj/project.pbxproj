@@ -658,8 +658,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Halter (F2NVTTUCV9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Halter (F2NVTTUCV9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Halter (V297H2G2L8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Halter (V297H2G2L8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -674,7 +674,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71b84fdb-e956-43f2-b83e-47c6decfc764";
+				PROVISIONING_PROFILE = "f692656d-5436-4f45-84c3-304cac103d1d";
 				SWIFT_OBJC_BRIDGING_HEADER = "Brain Twist/Brain Twist-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -685,8 +685,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Halter (F2NVTTUCV9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Halter (F2NVTTUCV9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Halter (V297H2G2L8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Halter (V297H2G2L8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -701,7 +701,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71b84fdb-e956-43f2-b83e-47c6decfc764";
+				PROVISIONING_PROFILE = "f692656d-5436-4f45-84c3-304cac103d1d";
 				SWIFT_OBJC_BRIDGING_HEADER = "Brain Twist/Brain Twist-Bridging-Header.h";
 			};
 			name = Release;
