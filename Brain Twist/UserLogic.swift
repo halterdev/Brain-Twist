@@ -32,6 +32,9 @@ struct UserLogic
         InsertUserStatRow(user: user)
         InsertUserCoinsRow(user: user)
         
+        PFInstallation.currentInstallation().setObject(user, forKey: "User")
+        PFInstallation.currentInstallation().save()
+        
         return result
     }
     
