@@ -23,10 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ALSdk.initializeSdk()
         
-        var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
-        var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
-        UIApplication.sharedApplication().registerUserNotificationSettings(setting);
-        UIApplication.sharedApplication().registerForRemoteNotifications();
+        if application.respondsToSelector("registerUserNotificationSettings:")
+        {
+            
+            let types:UIUserNotificationType = (.Alert | .Badge | .Sound)
+            let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+            
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+            
+        } else
+        {
+            // Register for Push Notifications before iOS 8
+            application.registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
+        }
         
         BITHockeyManager.sharedHockeyManager().configureWithIdentifier("817c3cfc68dd52701c6dd5d3b812148c")
         // Configure the SDK in here only!
@@ -41,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         
         var pfInstallation = PFInstallation.currentInstallation()
+        pfInstallation.setValue("ios", forKey: "deviceType")
         pfInstallation.setDeviceTokenFromData(deviceToken)
         pfInstallation.channels = ["global"]
         pfInstallation.save()
@@ -68,6 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        var installation = PFInstallation.currentInstallation()
+        installation.badge = 0
+        installation.saveEventually(nil)
     }
 
     func applicationWillTerminate(application: UIApplication) {

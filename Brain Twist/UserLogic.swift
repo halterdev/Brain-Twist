@@ -32,7 +32,7 @@ struct UserLogic
         InsertUserStatRow(user: user)
         InsertUserCoinsRow(user: user)
         
-        PFInstallation.currentInstallation().setObject(user, forKey: "User")
+        PFInstallation.currentInstallation().setValue(PFUser.currentUser().objectId, forKey: "UserId")
         PFInstallation.currentInstallation().save()
         
         return result
@@ -215,5 +215,27 @@ struct UserLogic
         var coinRow = query.getFirstObject()
         
         return coinRow.valueForKey("LastCoinGenerated") as! NSDate
+    }
+    
+    /**
+        Send Round over Push notoifcation to opponent
+    
+        :param: opponent PFUser
+    */
+    static func SendEndOfRoundPushNotification(#opponentId: String)
+    {
+        var query = PFInstallation.query()
+        query.whereKey("UserId", equalTo: opponentId)
+        
+        let data =
+        [
+            "alert" : "You have a new turn!",
+            "badge" : "Increment"
+        ]
+        
+        var push = PFPush()
+        push.setQuery(query)
+        push.setData(data)
+        push.sendPush(nil)
     }
 }

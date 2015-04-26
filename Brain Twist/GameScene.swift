@@ -186,6 +186,24 @@ class GameScene: SKScene {
                         game.updateGameForEndOfCurrentTurn(PFUser.currentUser())
                         UserLogic.SubtractCoin(user: PFUser.currentUser())
                         
+                        var opponentId: String?
+                        if((game.currentRound.pfRoundObj?.objectForKey("PlayerOne") as! PFUser).objectId == PFUser.currentUser().objectId)
+                        {
+                            // opponent is playertwo .. if there is a playertwo yet of course
+                            if(game.currentRound.pfRoundObj?.objectForKey("PlayerTwo") != nil)
+                            {
+                                opponentId = (game.currentRound.pfRoundObj!.objectForKey("PlayerTwo") as! PFUser).objectId
+                            }
+                            else
+                            {
+                                opponentId = nil
+                            }
+                        }
+                        else
+                        {
+                            opponentId = (game.currentRound.pfRoundObj!.objectForKey("PlayerOne") as! PFUser).objectId
+                        }
+                        
                         if(game.currentRound.isRoundOver())
                         {
                             game.currentRound.markRoundFinished()
@@ -202,11 +220,27 @@ class GameScene: SKScene {
                             {
                                 RoundLogic.createNewRoundForGame(game: game)
                                 GameLogic.UpdateRoundNumberOfGame(game: game)
+                                
+                                if(opponentId != nil)
+                                {
+                                    UserLogic.SendEndOfRoundPushNotification(opponentId: opponentId!)
+                                }
                             }
                             else
                             {
                                 GameLogic.SetGameIsFinished(game: game)
                                 GameLogic.SetWinnerOfGame(game: game)
+                            }
+                        }
+                        else
+                        {
+                            if(game.currentRound.pfRoundObj?.valueForKey("PlayerTwo") != nil)
+                            {
+                                // send notification at this point to opponent if there is one
+                                if(opponentId != nil)
+                                {
+                                    UserLogic.SendEndOfRoundPushNotification(opponentId: opponentId!)
+                                }
                             }
                         }
                         done = true
