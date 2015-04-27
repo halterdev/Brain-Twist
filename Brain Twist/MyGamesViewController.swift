@@ -91,7 +91,24 @@ class MyGamesViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if(myTurnStrings != nil)
             {
-                cell.textLabel?.text = self.myTurnStrings![indexPath.row]
+                // formatting the cells of my turns table here
+                
+                let font = UIFont(name: "Arial", size: 14.0) ?? UIFont.systemFontOfSize(10.0)
+                let regFont = [NSFontAttributeName:font]
+                
+                let fontItal = UIFont(name: "Georgia-Italic", size: 10.0) ?? UIFont.systemFontOfSize(10.0)
+                let italFont = [NSFontAttributeName:fontItal]
+                
+                let string = NSMutableAttributedString()
+                
+                let topString = NSAttributedString(string: self.myTurnStrings![indexPath.row] + "\n", attributes: regFont)
+                let bottomString = NSAttributedString(string: RoundLogic.GetBottomTextForMyTurnCell(user: PFUser.currentUser(), gameId: self.myTurnGameIds![indexPath.row]), attributes:italFont)
+                
+                string.appendAttributedString(topString)
+                string.appendAttributedString(bottomString)
+                
+                cell.textLabel?.numberOfLines = 0
+                cell.textLabel?.attributedText = string
             }
         }
         else

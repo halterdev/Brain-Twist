@@ -99,4 +99,71 @@ struct RoundLogic
         
         pfRoundObj.save()
     }
+    
+    /**
+        Generate the bottom string of a My Turns table cell
+        This String will tell a User if they are winning, losing or tied 
+        
+        :param: user PFUser
+        :param: gameId String
+        :return: String
+    */
+    static func GetBottomTextForMyTurnCell(#user: PFUser, gameId: String) -> String
+    {
+        var result = ""
+        
+        var query = PFQuery(className: "Game")
+        query.whereKey("objectId", equalTo: gameId)
+        
+        var game = query.getFirstObject() as PFObject
+        var roundNum = game.valueForKey("RoundNumber") as! Int
+        
+        var roundQuery = PFQuery(className: "Round")
+        roundQuery.whereKey("Game", equalTo: game)
+        roundQuery.whereKey("RoundNumber", equalTo: roundNum)
+        
+        var roundObj = roundQuery.getFirstObject()
+        
+        var playerOne = roundObj.objectForKey("PlayerOne") as! PFUser
+        var playerTwo = roundObj.objectForKey("PlayerTwo") as! PFUser
+        
+        var playerOneWins = game.valueForKey("PlayerOneWins") as! Int
+        var playerTwoWins = game.valueForKey("PlayerTwoWins") as! Int
+        
+        var isPlayerOne = playerOne.objectId == user.objectId
+        
+        if(playerOneWins != playerTwoWins)
+        {
+            // game is not tied
+            if(playerOneWins > playerTwoWins)
+            {
+                if(isPlayerOne)
+                {
+                    result = "You are winning \(playerOneWins)-\(playerTwoWins)"
+                }
+                else
+                {
+                    result = "You are losing \(playerOneWins)-\(playerTwoWins)"
+                }
+            }
+            else
+            {
+                if(isPlayerOne)
+                {
+                    result = "You are losing \(playerTwoWins)-\(playerOneWins)"
+                }
+                else
+                {
+                    result = "You are winning \(playerTwoWins)-\(playerOneWins)"
+                }
+            }
+        }
+        else
+        {
+            // game is tied
+            result = "Game is tied \(playerOneWins)-\(playerTwoWins)"
+        }
+        
+        return result
+    }
 }
