@@ -72,12 +72,18 @@ struct GameLogic
         var p1Wins = game.pfGameObj!.valueForKey("PlayerOneWins") as! Int
         var p2Wins = game.pfGameObj!.valueForKey("PlayerTwoWins") as! Int
         
+        var winner: PFUser
+        var loser: PFUser
+        
         if(p1Wins > p2Wins)
         {
             game.pfGameObj!.setObject(p1, forKey: "Winner")
             
             UserLogic.AddWin(user: p1)
             UserLogic.AddLoss(user: p2)
+            
+            winner = p1
+            loser = p2
         }
         else
         {
@@ -85,9 +91,14 @@ struct GameLogic
             
             UserLogic.AddWin(user: p2)
             UserLogic.AddLoss(user: p1)
+            
+            winner = p2
+            loser = p1
         }
         
         game.pfGameObj!.save()
+        
+        UserLogic.SendEndOfGameNotifcations(winner: winner, loser: loser, game: game.pfGameObj!, playerOneWon: p1Wins > p2Wins)
     }
     
     /**

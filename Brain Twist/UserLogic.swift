@@ -238,4 +238,58 @@ struct UserLogic
         push.setData(data)
         push.sendPush(nil)
     }
+    
+    /**
+        Send end of game notification to both winner and loser
+        
+        :param: winner PFUser
+        :param: loser PFUser
+    */
+    static func SendEndOfGameNotifcations(#winner: PFUser, loser: PFUser, game: PFObject, playerOneWon: Bool)
+    {
+        var playerOneWins = game.valueForKey("PlayerOneWins") as! Int
+        var playerTwoWins = game.valueForKey("PlayerTwoWins") as! Int
+        
+        var winningScore: Int
+        var losingScore: Int
+        
+        if(playerOneWon)
+        {
+            winningScore = playerOneWins
+            losingScore = playerTwoWins
+        }
+        else
+        {
+            winningScore = playerTwoWins
+            losingScore = playerOneWins
+        }
+        
+        var winnerQuery = PFInstallation.query()
+        winnerQuery.whereKey("UserId", equalTo: winner.objectId)
+        
+        let winnerData =
+        [
+            "alert" : "You defeated \(loser.username), \(winningScore)-\(losingScore)",
+            "badge" : "Increment"
+        ]
+        
+        var loserQuery = PFInstallation.query()
+        loserQuery.whereKey("UserId", equalTo: loser.objectId)
+        
+        let loserData =
+        [
+            "alert" : "You were defeated by \(winner.username), \(winningScore)-\(losingScore)",
+            "badge" : "Increment"
+        ]
+        
+        var winnerPush = PFPush()
+        winnerPush.setQuery(winnerQuery)
+        winnerPush.setData(winnerData)
+        winnerPush.sendPush(nil)
+        
+        var loserPush = PFPush()
+        loserPush.setQuery(loserQuery)
+        loserPush.setData(loserData)
+        loserPush.sendPush(nil)
+    }
 }
