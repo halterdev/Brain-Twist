@@ -250,6 +250,9 @@ struct UserLogic
         var playerOneWins = game.valueForKey("PlayerOneWins") as! Int
         var playerTwoWins = game.valueForKey("PlayerTwoWins") as! Int
         
+        var winnerName = getUsernameWithObjectId(winner.objectId)
+        var loserName = getUsernameWithObjectId(loser.objectId)
+        
         var winningScore: Int
         var losingScore: Int
         
@@ -269,7 +272,7 @@ struct UserLogic
         
         let winnerData =
         [
-            "alert" : "You defeated \(loser.username), \(winningScore)-\(losingScore)",
+            "alert" : "You defeated \(loserName), \(winningScore)-\(losingScore)",
             "badge" : "Increment"
         ]
         
@@ -278,7 +281,7 @@ struct UserLogic
         
         let loserData =
         [
-            "alert" : "You were defeated by \(winner.username), \(winningScore)-\(losingScore)",
+            "alert" : "You were defeated by \(winnerName), \(winningScore)-\(losingScore)",
             "badge" : "Increment"
         ]
         

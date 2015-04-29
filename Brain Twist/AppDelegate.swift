@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
             
-        } else
+        }
+        else
         {
             // Register for Push Notifications before iOS 8
             application.registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
